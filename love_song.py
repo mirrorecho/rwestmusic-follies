@@ -16,7 +16,7 @@ from calliope.work import Arrangement, Project, Part
 class LoveArrangement(Arrangement):
     def __init__(self):
 
-        super().__init__(name="love_song", title="An Undecided Love Song", project=Project(name="rwestmusic-follies"))
+        super().__init__(name="love_song", title="An Undecided...", project=Project(name="rwestmusic-follies"))
         self.add_part(name='voice', instrument=instrumenttools.MezzoSopranoVoice(instrument_name="Voice", short_instrument_name=""))
         self.add_piano_staff_part(name='piano', instrument=instrumenttools.Piano(instrument_name="Piano", short_instrument_name=""))
 
@@ -73,10 +73,10 @@ blank_lines = [
 def extend_lines(lines):
     big_lines = ["", "", "", ""]
     for l in lines:
-        big_lines[0] += l[0] + " " 
-        big_lines[1] += l[1] + " " 
-        big_lines[2] += l[2] + " " 
-        big_lines[3] += l[3] + " " 
+        big_lines[0] = big_lines[0] + l[0] + " " 
+        big_lines[1] = big_lines[1] + l[1] + " " 
+        big_lines[2] = big_lines[2] + l[2] + " " 
+        big_lines[3] = big_lines[3] + l[3] + " " 
     love_arrangement.parts["voice"].extend("\\relative c' {" + big_lines[0] + "}")
     # TO DO... figure out how to add voice part here...
     love_arrangement.parts["piano"][0].extend("\\relative c' {" + big_lines[2] + "}")
@@ -149,34 +149,34 @@ mouse_lines = [
         ], #2 ||-------|------||-------|------||-------|------||-------|------
         [      "R1",
                "",
-               "R1",
+               "r2                              f4(             e",
                "R1",
         ], #3 ||-------|------||-------|------||-------|------||-------|------
-        [      "r2                              f4^\\p          e    ",
-               "                                I               once",
-               "r2                              f8      d'      <a e'>4",
-               "r2                              d'4             c",
+        [      "r2                              f4^\\p          e       ",
+               "                                I               once    ",
+               "c'2)                            f,8[(   d']     e[      c]",
+               "a'2                             d4(             <a c>~       ",
         ], #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
            #4 ||-------|------||-------|------||-------|------||-------|------
         [      "\\times 2/3 { f4   e      g }   g4              r8      f",
                "             lived like   a     mouse                   a-",
-               "R1",
-               "R1",
+               "\\times 2/3 { f,4  <c' e>  g }  <b g'>4.)               f8(",
+               "<a c>4          <g e'>4~        <g e'>2)                ",
         ], #5 ||-------|------||-------|------||-------|------||-------|------
         [      "\\times 2/3 { e4    g     g}    g4              r4",
                "              lone  in    my    house",
-               "R1",
-               "R1",
+               "\\times 2/3 { e2        g4  }   <b g'>2)        ",
+               "\\times 2/3 { <c, a'>4(  g'2~ }  g4..)                    c,16",
         ], #6 ||-------|------||-------|------||-------|------||-------|------
         [      "r4              f^\\<           c               r8      c16  c",
                "                when            fate                    in - ter ",
-               "R1",
-               "R1",
+               "<c, d f>2                       c8.      e16    c8      c16  c",
+               "c4              c4              a4              bf4",
         ], #7 ||-------|------||-------|------||-------|------||-------|------
         [      "\\times 2/3 { g'4    g     g}   g4^\\!\\mf      r4",
                "             -up  -ted    my    life ",
                "R1",
-               "R1",
+               "c2                              e,2             ",
         ],
     ]
 
@@ -186,21 +186,21 @@ swept_lines = [
         [      "R1",
                "",
                "R1",
-               "R1",
+               "e,1",
         ], #1 ||-------|------||-------|------||-------|------||-------|------
         [      "r4              g'4^\\mf        \\times 2/3 { bf4   a   f } ",
                "                fate                          swept me  a-    ",
-               "R1",
-               "R1",
+               "r2                              \\times 2/3 { <c f bf>4   <c f a>   <c f> }",
+               "e4              f2.                             ",
         ], #2 ||-------|------||-------|------||-------|------||-------|------
         [      "f2                              r4              g",
                "way                                             and",
-               "R1",
+               "<c d f>1",
                "R1",
         ], #3 ||-------|------||-------|------||-------|------||-------|------
-        [      "\\times 2/3 { bf'8  a  a4  f4 } f2 ",
+        [      "\\times 2/3 { bf8  a  a4  f4 }  f2 ",
                "              sud- den- ly one  day ",
-               "R1",
+               "\\times 2/3 { <c f bf>8  <c f a> <c f a>4 <c f> } <c d f>2",
                "R1",
         ], #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
            #4 ||-------|------||-------|------||-------|------||-------|------
@@ -250,12 +250,12 @@ strive_lines = [
                "R1",
         ], #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
            #4 ||-------|------||-------|------||-------|------||-------|------
-        [      "f4\\<           e               c'2^\\!\\f"",
+        [      "f4\\<           e               c'2^\\!\\f",
                "I               must            strive",
                "R1",
                "R1",
         ], #5 ||-------|------||-------|------||-------|------||-------|------
-        [      "r8      g'      g       g       \\times 2/3 {  bf4   a    f }",
+        [      "r8      g       g[      g]       \\times 2/3 {  bf4   a    f }",
                "        to      keep    the                    foll- ies    a-",
                "R1",
                "R1",
@@ -265,7 +265,7 @@ strive_lines = [
                "R1",
                "R1",
         ], #7 ||-------|------||-------|------||-------|------||-------|------
-        [      "g'4             g               a2",
+        [      "g4             g               a2",
                "help            them            thrive ",
                "R1",
                "R1",
@@ -314,13 +314,13 @@ me_lines = [
            #1 ||-------|------||-------|------||-------|------||-------|------
         [      "r4              g'4^\\mf        \\times 2/3 { bf4   a   f } ",
                "                fate                          swept me  a-    ",
-               copy.copy(mouse_lines[1][2]), copy.copy(mouse_lines[1][3]), # maybe match the vocal line?
+               copy.copy(swept_lines[1][2]), copy.copy(swept_lines[1][3]), # maybe match the vocal line?
         ], #2 ||-------|------||-------|------||-------|------||-------|------
         [      "f2                              r4              g",
                "way                                             and",
-               copy.copy(mouse_lines[2][2]), copy.copy(mouse_lines[2][3]),
+               copy.copy(swept_lines[2][2]), copy.copy(swept_lines[2][3]),
         ], #3 ||-------|------||-------|------||-------|------||-------|------
-        [      "\\times 2/3 { bf'8  a  a4  f4 } f2 ",
+        [      "\\times 2/3 { bf8  a  a4  f4 } f2 ",
                "              sud- den- ly one  day ",
                "R1",
                "R1",
@@ -362,7 +362,7 @@ mouse2_lines = [
                "R1",# maybe this should be different to match the vocal line...
                copy.copy(mouse_lines[6][3]),
         ], #7 ||-------|------||-------|------||-------|------||-------|------
-        [      copy.deepcopy(mouse_lines[7]),
+        [      copy.copy(mouse_lines[7][0]),
                "             an- y- one's       wife",
                copy.copy(mouse_lines[7][2]), copy.copy(mouse_lines[7][3]),
         ],
@@ -491,5 +491,23 @@ extend_lines(choose_lines)
 
 extend_lines(tell_lines)
 
+voice_notes = love_arrangement.parts["voice"]
 
 love_arrangement.show_pdf()
+
+# l_string = "\\addlyrics { yo la }"
+# v_string = "\\relative c' {a'1 | a1 }"
+# p_string = "R1 | R1"
+
+# arr = LoveArrangement()
+# arr.parts["voice"].extend(v_string)
+# arr.parts["piano"][0].extend(p_string)
+# arr.parts["piano"][0].extend(p_string)
+
+# arr.make_score()
+
+# print(format(arr.score))
+
+#show(c)
+
+
