@@ -1,6 +1,6 @@
-lovelyrics = \lyricmode {                                   I               once                  lived like   a     mouse                   a-               lone  in    my    house                 when            fate                    in-  ter-               up-    ted    my    life                    fate                          swept me  a-     way                                             and               sud- den- ly one  day                  I               found                   my- self                    in                    charge   of   a  play                                                    it      be- came            my              miss -ion               to               save  a   tra-    di- tion I               must            strive         to      keep    the                    foll- ies    a- live                                            and  help            them            thrive                                      Now             --               all  of    these  throngs                 need- ed               all  of    these  songs                 and                           won- der- ful            speech-  es   to     speak                   fate                          swept me  a-     way                                             and               sud- den- ly one  day                  I               found                   my- self                    in                    charge   of   a  play                                      I               once                  lived like   a     mouse                   a-               lone  in    my    house         and     ne-     ver     thought I`d     be              an- y- one`s       wife                    } 
+lovelyrics = \lyricmode {                                   I               once                  lived like   a     mouse                   a-               lone  in    my    house                 when            fate                    in-  ter-               up-    ted    my    life                    fate                          swept me  a-     way                                             and               sud- den- ly one  day                  I               found                   my- self                    in                    charge   of   a  play                                                    it      be- came            my              miss -ion               to               save  a   tra-    di- tion I               must            strive         to      keep    the                    foll- ies    a- live                                            and  help            them            thrive                                      Now             --               all  of    these  throngs                 need- ed               all  of    these  songs                 and                           won- der- ful            speech-  es   to     speak                                                   writt- en by     me!                                                            ounce so meek!                                          I               once                  lived like   a     mouse                   a-               lone  in    my    house         and     ne-     ver     thought I`d     be              an- y- one`s       wife                                                      I       don`t               know which to     choose                                                 I       don`t               know which to     lose                 Which should I    choose                  and               which  should I   lose                 Tell             me                     which one     should  be      my                    lead- ing man   } 
 
-% 2015-01-08 15:00
+% 2015-01-08 16:15
 
 \version "2.18.2"
 \language "english"
@@ -9,7 +9,8 @@ lovelyrics = \lyricmode {                                   I               once
 
 \header {
 	composer = \markup { Randall West }
-	title = \markup { An Undecided... }
+	subtitle = \markup { (voice part with piano sketches) }
+	title = \markup { An Undecided Love Soung }
 }
 
 \layout {
@@ -182,37 +183,31 @@ lovelyrics = \lyricmode {                                   I               once
 			}
 			{
 				R1
-				r4
-				g'4 \mf
+				r2
 				\times 2/3 {
 					bf'4
 					a'4
 					f'4
 				}
-				f'2
+				f''2.
 				r4
-				g'4
 				\times 2/3 {
-					bf'8
-					a'8
-					a'4
-					f'4
-				}
-				f'2
-				r4
-				f'4
-				g'4.
-				f'8
-				f'4
-				r8
-				a'8
-				\times 2/3 {
-					a'4
 					g'4
-					f'4
+					g'4
+					g'4
 				}
-				f'2.
-				r4
+				r2
+				r1
+					^ \markup {
+						\column
+							{
+								"(spoken) and then, and then, would you believe...?!"
+								"Along came a chance for romance, along came a Frenchman..."
+								"a REAL Frenchman from France!"
+							}
+						}
+				R1
+				R1
 				R1
 			}
 			{
@@ -253,23 +248,69 @@ lovelyrics = \lyricmode {                                   I               once
 				r4
 			}
 			{
+				r1
+					^ \markup {
+						\column
+							{
+								"(spoken) And then the other Frog turned into a prince..."
+								"and ever since, though I`ve had hints..."
+							}
+						}
 				R1
 				R1
 				R1
-				R1
-				R1
-				R1
-				R1
-				R1
+				r2
+				r4
+				g'8
+				a'8
+				\times 2/3 {
+					c''4
+					b'4
+					g'4
+				}
+				d''2
+				r2
+				r4
+				g'8
+				a'8
+				\times 2/3 {
+					c''4
+					b'4
+					g'4
+				}
+				g'2
 			}
 			{
 				R1
-				R1
-				R1
-				R1
-				R1
-				R1
-				R1
+				\times 2/3 {
+					f'4
+					e'4
+					g'4
+				}
+				g'4
+				r8
+				f'8
+				\times 2/3 {
+					e'4
+					g'4
+					g'4
+				}
+				g'4
+				r4
+				r4
+				f'4
+				c'4
+				r8
+				c'8
+				g'8
+				g'8
+				g'8
+				g'8
+				\times 2/3 {
+					g'4
+					g'4
+					g'4
+				}
 				R1
 			}
 		}
@@ -281,47 +322,47 @@ lovelyrics = \lyricmode {                                   I               once
 			\new Staff {
 				{
 					\times 2/3 {
+						d'4 (
+						<a' c''>4
+						e'4
+					}
+					<g' e''>4. )
+					c''8 (
+					\times 2/3 {
 						d'4
 						<a' c''>4
 						e'4
 					}
-					<g' e''>4.
-					c''8
-					\times 2/3 {
-						d''4
-						<a'' c'''>4
-						e''4
-					}
-					<g'' e'''>2
+					<g' e''>2 )
 					f'8 [ (
 					d''8 ]
 					e''8 [
 					c''8 ] )
-					f''4 (
-					e''4
-					c'''2 )
-					f''8 [ (
-					d'''8 ]
-					e'''8 [
-					c'''8 ]
+					f'4 (
+					e'4
+					c''2 )
+					f'8 [ (
+					d''8 ]
+					e''8 [
+					c''8 ]
 					\times 2/3 {
-						f''4
-						<c''' e'''>4
-						g''4
+						f'4
+						<c'' e''>4
+						g'4
 					}
-					<b'' g'''>4. )
-					f''8 (
+					<b' g''>4. )
+					f'8 (
 					\times 2/3 {
-						e''2
-						g''4
+						e'2
+						g'4
 					}
-					<b'' g'''>2 )
-					<c'' d'' f''>2
-					c''8.
-					e''16
-					c''8
-					c''16
-					c''16
+					<b' g''>2 )
+					<c' d' f'>2
+					c'8.
+					e'16
+					c'8
+					c'16
+					c'16
 					R1
 				}
 				{
@@ -362,41 +403,41 @@ lovelyrics = \lyricmode {                                   I               once
 				}
 				{
 					\times 2/3 {
+						d'4 (
+						<a' c''>4
+						e'4
+					}
+					<g' e''>4. )
+					c''8 (
+					\times 2/3 {
 						d'4
 						<a' c''>4
 						e'4
 					}
-					<g' e''>4.
-					c''8
-					\times 2/3 {
-						d''4
-						<a'' c'''>4
-						e''4
-					}
-					<g'' e'''>2
+					<g' e''>2 )
 					f'8 [ (
 					d''8 ]
 					e''8 [
 					c''8 ] )
-					f''4 (
-					e''4
-					c'''2 )
-					f''8 [ (
-					d'''8 ]
-					e'''8 [
-					c'''8 ]
+					f'4 (
+					e'4
+					c''2 )
+					f'8 [ (
+					d''8 ]
+					e''8 [
+					c''8 ]
 					\times 2/3 {
-						f''4
-						<c''' e'''>4
-						g''4
+						f'4
+						<c'' e''>4
+						g'4
 					}
-					<b'' g'''>4. )
-					f''8 (
+					<b' g''>4. )
+					f'8 (
 					\times 2/3 {
-						e''2
-						g''4
+						e'2
+						g'4
 					}
-					<b'' g'''>2 )
+					<b' g''>2 )
 					R1
 					R1
 				}
@@ -409,49 +450,60 @@ lovelyrics = \lyricmode {                                   I               once
 						<c' f'>4
 					}
 					<c' d' f'>1
+					\times 2/3 {
+						<c' f' bf'>8
+						<c' f' a'>8
+						<c' f' a'>4
+						<c' f'>4
+					}
+					<c' d' f'>2
 					R1
-					R1
-					R1
+					r2
+					\times 2/3 {
+						<c' f' a'>4
+						g4
+						<c' f'>4
+					}
 					R1
 					R1
 				}
 				{
+					\times 2/3 {
+						d'4 (
+						<a' c''>4
+						e'4
+					}
+					<g' e''>4. )
+					c''8 (
 					\times 2/3 {
 						d'4
 						<a' c''>4
 						e'4
 					}
-					<g' e''>4.
-					c''8
-					\times 2/3 {
-						d''4
-						<a'' c'''>4
-						e''4
-					}
-					<g'' e'''>2
+					<g' e''>2 )
 					f'8 [ (
 					d''8 ]
 					e''8 [
 					c''8 ] )
-					f''4 (
-					e''4
-					c'''2 )
-					f''8 [ (
-					d'''8 ]
-					e'''8 [
-					c'''8 ]
+					f'4 (
+					e'4
+					c''2 )
+					f'8 [ (
+					d''8 ]
+					e''8 [
+					c''8 ]
 					\times 2/3 {
-						f''4
-						<c''' e'''>4
-						g''4
+						f'4
+						<c'' e''>4
+						g'4
 					}
-					<b'' g'''>4. )
-					f''8 (
+					<b' g''>4. )
+					f'8 (
 					\times 2/3 {
-						e''2
-						g''4
+						e'2
+						g'4
 					}
-					<b'' g'''>2 )
+					<b' g''>2 )
 					R1
 					R1
 				}
@@ -466,8 +518,6 @@ lovelyrics = \lyricmode {                                   I               once
 					R1
 				}
 				{
-					R1
-					R1
 					R1
 					R1
 					R1
@@ -562,8 +612,11 @@ lovelyrics = \lyricmode {                                   I               once
 					f,2.
 					R1
 					R1
-					R1
-					R1
+					r4
+					a,4
+					bf,2
+					bf,2
+					<a, f>2
 					R1
 					R1
 				}
@@ -605,8 +658,6 @@ lovelyrics = \lyricmode {                                   I               once
 					R1
 				}
 				{
-					R1
-					R1
 					R1
 					R1
 					R1

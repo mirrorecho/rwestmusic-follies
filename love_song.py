@@ -17,7 +17,7 @@ from calliope.work import Arrangement, Project, Part
 class LoveArrangement(Arrangement):
     def __init__(self):
 
-        super().__init__(name="love_song", title="An Undecided...", project=Project(name="rwestmusic-follies"))
+        super().__init__(name="love_song", title="An Undecided Love Soung", project=Project(name="rwestmusic-follies"))
         self.add_part(name='voice', instrument=instrumenttools.MezzoSopranoVoice(instrument_name="Voice", short_instrument_name="."))
         self.add_piano_staff_part(name='piano', instrument=instrumenttools.Piano(instrument_name="Piano", short_instrument_name="."))
 
@@ -153,7 +153,7 @@ mouse_lines = [
         ], #2 ||-------|------||-------|------||-------|------||-------|------
         [      "R1",
                "",
-               "f,8[(   d']     e[      c])      f4(             e",
+               "f8[(   d']     e[      c])      f,4(             e",
                "d4              c4              a2",
         ], #3 ||-------|------||-------|------||-------|------||-------|------
         [      "r2                              f4^\\p          e       ",
@@ -269,7 +269,7 @@ strive_lines = [
                "R1",
                "R1",
         ], #7 ||-------|------||-------|------||-------|------||-------|------
-        [      "g4             g               a2",
+        [      "g4              g               a2",
                "help            them            thrive ",
                "R1",
                "R1",
@@ -305,43 +305,33 @@ throngs_lines = [
         ],
 ]
 
-# Bb       A   F   F+
-# Written by me, once so meek! 
-
-# (spoken) And then, and then, would you believe….
-# Along came a chance for romance
-# Along came a Frenchman, 
-# A real Frenchman from France!
 
 me_lines = [
         copy.deepcopy(swept_lines[0]),
            #1 ||-------|------||-------|------||-------|------||-------|------
-        [      "r4              g'4^\\mf        \\times 2/3 { bf4   a   f } ",
-               "                fate                          swept me  a-    ",
+        [      "r2                              \\times 2/3 { bf'4   a   f } ",
+               "                                                writt- en by    ",
                copy.copy(swept_lines[1][2]), copy.copy(swept_lines[1][3]), # maybe match the vocal line?
         ], #2 ||-------|------||-------|------||-------|------||-------|------
-        [      "f2                              r4              g",
-               "way                                             and",
+        [      "f'2.                                            r4",
+               "me!                                             ",
                copy.copy(swept_lines[2][2]), copy.copy(swept_lines[2][3]),
         ], #3 ||-------|------||-------|------||-------|------||-------|------
-        [      "\\times 2/3 { bf8  a  a4  f4 } f2 ",
-               "              sud- den- ly one  day ",
-               "R1",
-               "R1",
+        [      "\\times 2/3 { g,4 g g }         r2 ",
+               "              ounce so meek! ",
+               copy.copy(swept_lines[3][2]), copy.copy(swept_lines[3][3]),
         ], #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
            #4 ||-------|------||-------|------||-------|------||-------|------
-        [      "r4              f               g4.                     f8",
-               "                I               found                   my-",
-               "R1",
-               "R1",
+        [      'r1^"(spoken) and then, and then, would you believe...?!" ^"Along came a chance for romance, along came a Frenchman..." ^"a REAL Frenchman from France!"',
+               "",
+               copy.copy(swept_lines[4][2]), copy.copy(swept_lines[4][3]),
         ], #5 ||-------|------||-------|------||-------|------||-------|------
-        [      "f4              r8      a8      \\times 2/3 {  a4     g    f }",
-               "self                    in                    charge   of   a ",
-               "R1",
-               "R1",
+        [      "R1",
+               "",
+               copy.copy(swept_lines[5][2]), copy.copy(swept_lines[5][3]),
         ], #6 ||-------|------||-------|------||-------|------||-------|------
-        [      "f2.                                             r4",
-               "play",
+        [      'R1',
+               "",
                "R1",
                "R1",
         ], #7 ||-------|------||-------|------||-------|------||-------|------
@@ -386,7 +376,7 @@ mouse2_lines = [
 choose_lines = [
            #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
            #0 ||-------|------||-------|------||-------|------||-------|------
-        [      "R1",
+        [      'r1^"(spoken) And then the other Frog turned into a prince..." ^"and ever since, though I`ve had hints..."',
                "",
                "R1",
                "R1",
@@ -407,33 +397,28 @@ choose_lines = [
                "R1",
         ], #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
            #4 ||-------|------||-------|------||-------|------||-------|------
-        [      "R1",
-               "",
+        [      "r2                              r4              g'8     a",
+               "                                                I       don`t",
                "R1",
                "R1",
         ], #5 ||-------|------||-------|------||-------|------||-------|------
-        [      "R1",
-               "",
+        [      "\\times 2/3 { c4 b g }          d'2",
+               "              know which to     choose",
                "R1",
                "R1",
         ], #6 ||-------|------||-------|------||-------|------||-------|------
-        [      "R1",
-               "",
+        [      "r2                              r4              g,8     a",
+               "                                                I       don`t",
                "R1",
                "R1",
         ], #7 ||-------|------||-------|------||-------|------||-------|------
-        [      "R1",
-               "",
+        [      "\\times 2/3 { c4 b g }          g2",
+               "              know which to     lose",
                "R1",
                "R1",
         ],
     ]
 
-# (F)     E          F     G   G        F     E            F       G    G  
-#      Which should I chose and which should I lose
-
-#  F        C        C    C        C         G   G     G   G      G
-# Tell me which one should be my leading man 
 
 tell_lines = [
            #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
@@ -443,24 +428,24 @@ tell_lines = [
                "R1",
                "R1",
         ], #1 ||-------|------||-------|------||-------|------||-------|------
-        [      "R1",
-               "",
+        [      "\\times 2/3 { f4   e      g }   g4              r8      f8",
+               "              Which should I    choose                  and",
                "R1",
                "R1",
         ], #2 ||-------|------||-------|------||-------|------||-------|------
-        [      "R1",
-               "",
+        [      "\\times 2/3 { e4    g     g}    g4              r4",
+               "              which  should I   lose",
                "R1",
                "R1",
         ], #3 ||-------|------||-------|------||-------|------||-------|------
-        [      "R1",
-               "",
+        [      "r4              f               c               r8      c8",
+               "                Tell             me                     which",
                "R1",
                "R1",
         ], #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
            #4 ||-------|------||-------|------||-------|------||-------|------
-        [      "R1",
-               "",
+        [      "g'8     g       g       g       \\times 2/3 { g4    g     g}",
+               "one     should  be      my                    lead- ing man",
                "R1",
                "R1",
         ], #5 ||-------|------||-------|------||-------|------||-------|------
@@ -469,16 +454,16 @@ tell_lines = [
                "R1",
                "R1",
         ], #6 ||-------|------||-------|------||-------|------||-------|------
-        [      "R1",
-               "",
-               "R1",
-               "R1",
-        ], #7 ||-------|------||-------|------||-------|------||-------|------
-        [      "R1",
-               "",
-               "R1",
-               "R1",
-        ],
+        # [      "R1",
+        #        "",
+        #        "R1",
+        #        "R1",
+        # ], #7 ||-------|------||-------|------||-------|------||-------|------
+        # [      "R1",
+        #        "",
+        #        "R1",
+        #        "R1",
+        # ],
     ]
 
 #extend_lines(love_lines)
@@ -543,6 +528,7 @@ def full_output():
 
     # TO DO... move "for Taiko and Orchestra" to subtitle
     lilypond_file.header_block.title = markuptools.Markup(love_arrangement.title)
+    lilypond_file.header_block.subtitle = markuptools.Markup("(voice part with piano sketches)")
 
     #song_ly = '\\language "english" \n\r\n\r'
     song_ly = ""
