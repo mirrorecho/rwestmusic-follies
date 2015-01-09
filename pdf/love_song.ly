@@ -1,6 +1,6 @@
 lovelyrics = \lyricmode {                                   I               once                  lived like   a     mouse                   a-               lone  in    my    house                 when            fate                    in-  ter-               up-    ted    my    life                    fate                          swept me  a-     way                                             and               sud- den- ly one  day                  I               found                   my- self                    in                    charge   of   a  play                                                    it      be- came            my              miss -ion               to               save  a   tra-    di- tion I               must            strive         to      keep    the                    foll- ies    a- live                                            and  help            them            thrive                                      Now             --               all  of    these  throngs                 need- ed               all  of    these  songs                 and                           won- der- ful            speech-  es   to     speak                                                   writt- en by     me!                                                            ounce so meek!                                          I               once                  lived like   a     mouse                   a-               lone  in    my    house         and     ne-     ver     thought I`d     be              an- y- one`s       wife                                                      I       don`t               know which to     choose                                                 I       don`t               know which to     lose                 Which should I    choose                  and               which  should I   lose                 Tell             me                     which one     should  be      my                    lead- ing man   } 
 
-% 2015-01-08 16:15
+% 2015-01-09 01:58
 
 \version "2.18.2"
 \language "english"
@@ -9,8 +9,7 @@ lovelyrics = \lyricmode {                                   I               once
 
 \header {
 	composer = \markup { Randall West }
-	subtitle = \markup { (voice part with piano sketches) }
-	title = \markup { An Undecided Love Soung }
+	title = \markup { An Undecided Love Song }
 }
 
 \layout {
@@ -29,7 +28,7 @@ lovelyrics = \lyricmode {                                   I               once
 		\override VerticalAxisGroup #'staff-staff-spacing = #'((basic-distance . 0) (minimum-distance . 0) (padding . 6) (stretchability . 0))
 		markFormatter = #format-mark-box-numbers
 	} <<
-		\new Staff {
+		\new Staff
        \new Voice ="voice" {
 			\set Staff.instrumentName = \markup { Voice }
 			\set Staff.shortInstrumentName = \markup { . }
@@ -314,8 +313,7 @@ lovelyrics = \lyricmode {                                   I               once
 				R1
 			}
 		}
-		}
-    \new Lyrics \lyricsto voice \lovelyrics 
+		\new Lyrics \lyricsto voice \lovelyrics 
     \new PianoStaff <<
 			\set PianoStaff.instrumentName = \markup { Piano }
 			\set PianoStaff.shortInstrumentName = \markup { . }
@@ -363,7 +361,12 @@ lovelyrics = \lyricmode {                                   I               once
 					c'8
 					c'16
 					c'16
-					R1
+					\times 2/3 {
+						<d' g'>4
+						g'4
+						<d' g'>4
+					}
+					<g g'>2
 				}
 				{
 					R1
@@ -373,14 +376,21 @@ lovelyrics = \lyricmode {                                   I               once
 						<c' f' a'>4
 						<c' f'>4
 					}
-					<c' d' f'>1
+					<c' d' f'>4 ~
+					<c' d' f'>8.
+					a16
+					g'8.
+					g16
+					g'4
 					\times 2/3 {
 						<c' f' bf'>8
 						<c' f' a'>8
 						<c' f' a'>4
 						<c' f'>4
 					}
-					<c' d' f'>2
+					<c' d' f'>4 ~
+					<c' d' f'>8.
+					a16
 					R1
 					r2
 					\times 2/3 {
@@ -392,11 +402,28 @@ lovelyrics = \lyricmode {                                   I               once
 					R1
 				}
 				{
-					R1
-					R1
-					R1
-					R1
-					R1
+					f'8 [ (
+					d''8 ]
+					e''8 [
+					c''8 ] )
+					f'4 (
+					e'4
+					c''2. )
+					f'8
+					e''8
+					f'8
+					<c'' e''>8
+					<g' g''>4
+					<g' g''>4.
+					f'8 (
+					\times 2/3 {
+						e'2
+						g'4
+					}
+					<b' g''>2 )
+					<a c' f'>4
+					<g c' e'>4
+					<e' c''>2
 					R1
 					R1
 					R1
@@ -439,7 +466,12 @@ lovelyrics = \lyricmode {                                   I               once
 					}
 					<b' g''>2 )
 					R1
-					R1
+					\times 2/3 {
+						<d'' g''>4
+						g''4
+						<d'' g''>4
+					}
+					<g' g''>2
 				}
 				{
 					R1
@@ -449,14 +481,21 @@ lovelyrics = \lyricmode {                                   I               once
 						<c' f' a'>4
 						<c' f'>4
 					}
-					<c' d' f'>1
+					<c' d' f'>4 ~
+					<c' d' f'>8.
+					a16
+					g'8.
+					g16
+					g'4
 					\times 2/3 {
 						<c' f' bf'>8
 						<c' f' a'>8
 						<c' f' a'>4
 						<c' f'>4
 					}
-					<c' d' f'>2
+					<c' d' f'>4 ~
+					<c' d' f'>8.
+					a16
 					R1
 					r2
 					\times 2/3 {
@@ -505,7 +544,12 @@ lovelyrics = \lyricmode {                                   I               once
 					}
 					<b' g''>2 )
 					R1
-					R1
+					\times 2/3 {
+						<d'' g''>4
+						g''4
+						<d'' g''>4
+					}
+					<g' g''>2
 				}
 				{
 					R1
@@ -552,29 +596,67 @@ lovelyrics = \lyricmode {                                   I               once
 					c4
 					a,4
 					bf,4
-					c2
+					<g, f>4
+					c4
 					e,2
 				}
 				{
 					e,1
 					e,4
-					f,2.
-					R1
-					R1
+					<f,, f,>4
+					\times 2/3 {
+						f,8 [
+						a,8 ]
+						c8 [
+						f8 ]
+						a8 [
+						bf8 ]
+					}
 					r4
-					a,4
-					bf,2
-					bf,2
-					<a, f>2
-					d1
+					f,16 [
+					c16
+					f16
+					r16 ]
+					e,16 [
+					c16
+					e16
+					r16 ]
+					f,8
+					f8
+					\times 2/3 {
+						f,8 [
+						a,8 ]
+						c8 [
+						f8 ]
+						a8 [
+						bf8 ]
+					}
+					r4
+					f,16 [
+					c16
+					f16
+					r16 ]
+					r4
+					a4
+					bf2
+					bf2
+					<a f'>2
+					d'1
 					R1
 				}
 				{
+					d4
+					c4
+					a,2
 					R1
 					R1
-					R1
-					R1
-					R1
+					\times 2/3 {
+						<c a>4 (
+						g2 ~
+					}
+					g2 )
+					<c, c>2
+					<a,, a,>2
 					R1
 					R1
 					R1
@@ -603,20 +685,51 @@ lovelyrics = \lyricmode {                                   I               once
 					c4
 					a,4
 					bf,4
-					c2
+					<g, f>4
+					c4
 					e,2
 				}
 				{
 					e,1
 					e,4
-					f,2.
-					R1
-					R1
+					<f,, f,>4
+					\times 2/3 {
+						f,8 [
+						a,8 ]
+						c8 [
+						f8 ]
+						a8 [
+						bf8 ]
+					}
 					r4
-					a,4
-					bf,2
-					bf,2
-					<a, f>2
+					f,16 [
+					c16
+					f16
+					r16 ]
+					e,16 [
+					c16
+					e16
+					r16 ]
+					f,8
+					f8
+					\times 2/3 {
+						f,8 [
+						a,8 ]
+						c8 [
+						f8 ]
+						a8 [
+						bf8 ]
+					}
+					r4
+					f,16 [
+					c16
+					f16
+					r16 ]
+					r4
+					a4
+					bf2
+					bf2
+					<a f'>2
 					R1
 					R1
 				}
@@ -644,7 +757,8 @@ lovelyrics = \lyricmode {                                   I               once
 					c4
 					a,4
 					bf,4
-					c2
+					<g, f>4
+					c4
 					e,2
 				}
 				{
