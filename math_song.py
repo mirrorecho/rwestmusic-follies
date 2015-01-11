@@ -6,6 +6,17 @@ from tools import MathArrangement
 
 math_arrangement = MathArrangement()
 
+# TO DO... 
+# - add arpeggio on Sue G chord
+# - complex dynamics
+# fix `
+# phrasing
+# respell accidentals?
+# move Mouse-e-an and Gaussian up?
+# rit in curve lines
+# stray fermati
+# awkward leading into the final intro (maybe put sue piano part here?)
+
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 # here's the music!
@@ -25,21 +36,42 @@ piano_jive = [
   "c4-.-> r8 r4.",
   ]
 
+piano_jive_mod = [
+  piano_jive[0],
+  piano_jive[1],
+  "f4-- e8-.  cs4-.-> r8 ",
+  "<a cs fs>2.",
+  ]
+
 piano_joss = [
   "<g e'>2.", 
   "d4-. f8-. gs4-. b8-.",
   "gs4-. g8-. b4-.-> r8", 
   "<c, c'>4-.-> r8 r4."
 ]
+piano_joss_mod = [
+  piano_joss[0], 
+  piano_joss[1],
+  "gs4-. f8-. gs4-.-> r8", 
+  "<fs cs'>2."
+]
+
+piano_c_rag = rel("c", "<e g c>4-- <e g c>8-.")
+
+piano_d_rag = rel("c", "<f a d>4-- <f a d>8-.")
+
+piano_c_pickup = rel("c", "r4 <e g c>8-.")
+
+piano_d_pickup = rel("c", "r4 <f a d>8-.")
 
 intro = [
-  [REST, "", REST, "", REST, piano_plunk_c*2],
-  [REST, "", REST, "", REST, piano_plunk_d*2],  
+  [REST, "", REST, "", "r4. " + piano_c_pickup + piano_c_rag + "r4. " , piano_plunk_c*2],
+  [REST, "", REST, "", "r4. " + piano_d_pickup + piano_d_rag + "r4. " , piano_plunk_d*2],  
   [REST, "", REST, "", rel("c'", piano_jive[0] + piano_jive[1]), rel("c", piano_joss[0] + piano_joss[1])],    
   [REST, "", 
     "R2. r4. c4     c8", 
     "        Though my", 
-    rel("c'", piano_jive[2] + "r4. <e g c>4    <e g c>8"), 
+    rel("c'", piano_jive[2] + "r4." + piano_c_rag), 
     rel("c", piano_joss[2] + piano_joss[3])],  
 ]
 
@@ -62,78 +94,206 @@ intro_4[3]=[REST, "",
 #intro 5 copies vocal part at end to Sue
 intro_5 = copy.deepcopy(intro)
 intro_5[3][0] = intro_5[3][2]
-intro_2[3][1] = "Though his"
+intro_5[3][1] = "Though his"
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-
+aso_line=["c4   c8 ",
+          "c4   d8 ",      
+          "e4   d8 ",      
+          "d4   d8 ",
+          #--------
+          "d4   d8 ",      
+          "d4   e8 ",      
+          "f4   e8 ",      
+          "r4. "]
 
 aso = [
-           #::::::::::::::::::::::::::::::::::::::::::::::::::||::::::::::::::::::::::::::::::::::::::::::::
         [  #0 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               REST,
-               "",
-               "c4              c8      c4              d8      e4              d8      d4              d8",
+               REST, "",
+               "".join(aso_line[0:4]),
                "love            is      as-             ymp-    to-             tic     And             my",
-               "<e, g c>4      <e g c>8  <e g c>4     <e g d'>8  <e g e'>4    <e g d'>8  <f a d>4      <f a d>8  ",
+               piano_c_rag +           "<e, g c>4--     <e g d'>8-. <e g e'>4--  <e g d'>8-." +  piano_d_pickup,
                rel("c,", piano_plunk_c*2),
         ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               REST,
-               "",
-               "d4              d8      d4              e8      f4              e8      r4.",
+               REST, "",
+               "".join(aso_line[4:8]),
                "pass-           ion     i-              di-     o-              tic",
-               "<f a d>4      <f a d>8  <f a d>4      <f a e'>8  <f a f'>4     <f a e'>8 r4.",
-               "<d, d'>4.--             a'4.-.                  <d, d'>4.--             r4.",
+               piano_d_rag +           "<f a d>4      <f a e'>8  <f a f'>4     <f a e'>8 r4.",
+               piano_plunk_d   +                              "<d, d'>4.--             r4.",
         ],[#2 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               REST,
-               "",
+               'r2.\\fermata^"(ridiculous long fermata)"         R2.                     ', "",
                'g2.\\fermata^"(ridiculous long fermata)"         R2.                     ',
                "Sue!                                                                    ",
-               'r2.\\fermata^"(ridiculous long fermata) " ' + piano_jive[1], # grace notes here...
-               "R2. " + piano_joss[1],
+               '<g\' b d g>2.\\fermata^"(ridiculous long fermata)" ' + rel("c'",piano_jive[1]), # arpeggiate here (TO DO ... giving error)
+               "<g, d' g>2.\\fermata " + rel("c",piano_joss[1]),
         ],[#3 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-                REST,
-               "",
+                REST, "",
                "R2.                                             r4.                     fs4.",
                "                                                                        to",
-               piano_jive[2] + piano_jive[3],
-               piano_joss[2] + piano_joss[3], # TO DO... adjust for key change
+               rel("c'", piano_jive_mod[2] + piano_jive_mod[3]),
+               rel("c",piano_joss_mod[2] + piano_joss_mod[3]), # TO DO... adjust for key change
         ],
     ]
+# ---------------------------------------------------
+aso_2 = copy.deepcopy(aso)  # CORRELATION
+
+aso_line_2 = copy.deepcopy(aso_line)
+aso_line_2[3] = "d8 d8 d8"
+aso_line_2[4] = aso_line_2[3]
+aso_line_2[6] = "f4."
+aso_line_2[7] = "r4."
+
+aso_2[0][2] = "".join(aso_line_2[0:4])
+aso_2[0][3]="have            no      cor-            re-     la-             tion    And     our     dy-"
+
+aso_2[1][2] = "".join(aso_line_2[4:8])
+aso_2[1][3]="na-     mics    are     too             com-    plex" 
+
+aso_2[2][0]=REST # get rid of fermata and adjust Tim's line at end
+aso_2[2][2]=rel("c'","g8 g g   g4. ~ g2.")
+aso_2[2][3]="Could-   n`t     there  be"
+aso_2[2][4]=aso_2[2][4].replace('\\fermata^"(ridiculous long fermata)"', ' ')
+aso_2[2][5]=aso_2[2][5].replace('\\fermata"', ' ')
+
+aso_2[3][2]=REST # no pickup before the slide down
+aso_2[3][3]=""
+
+# ---------------------------------------------------
+aso_3 = copy.deepcopy(aso_2)
+
+aso_line_3 = copy.deepcopy(aso_line) # the line is closer to the first time through
+aso_line_3[3] = "r4 d8"
+
+aso_3[0][2] = "".join(aso_line_3[0:4])
+aso_3[0][3]="love            some    sa-             tis-    fac-            tion                    A"
+
+aso_3[1][2] = "".join(aso_line_3[4:8])
+aso_3[1][3]="whole           not     just            a       frac-          tion"
+
+aso_3[2][2]=rel("c'","r4.   g4     g8     g4.    r4.")
+aso_3[2][3]="               Let's  ne-   gate"   
+
+aso_3[3] = copy.deepcopy(aso[3]) # bring the pickup back from beginning
+aso_3[3][3] = "this"
+
+# ??? change?  the pause after negate is awkward...
+# ---------------------------------------------------
+aso_4 = copy.deepcopy(aso_2)
+
+aso_line_4 = copy.deepcopy(aso_line) 
+aso_line_4[5] = "d4              e8("
+aso_line_4[6] = "f4)            e8"
+
+aso_4[0][2] = "".join(aso_line_4[0:4])
+aso_4[0][3]="let             us      be              bi-     no-             mi-     al              You"
+
+aso_4[1][0]="R2. r4. r4 g'8" # OK that G's not prepared? (probably OK)
+aso_4[1][1]="Oh "  
+aso_4[1][2] = "".join(aso_line_4[4:8])
+aso_4[1][3]="make            me      feel            Ro-                     meoal"
+
+aso_4[2][0]="g2. R2." 
+aso_4[2][1]="Tim!"  
+aso_4[2][2]=REST
+aso_4[2][3]=""   
+
+aso_4[3][0]="R2. r4. fs4." 
+aso_4[3][1]="You're "  
+aso_4[3][2]=REST
+aso_4[3][3]="" 
+# ---------------------------------------------------
+blast=[]
+blast.append(copy.deepcopy(aso[0])) # use only first two phrases from aso
+blast.append(copy.deepcopy(aso[1]))
+blast[0][0] = blast[0][2] # copy notes to Sue
+blast[1][0] = blast[1][2]
+# adjustment to Sue's lyrics
+blast[0][1] = "love            is      as-             ymp-    to-             tic     And             his"
+
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 curve = [
-           #::::::::::::::::::::::::::::::::::::::::::::::::::||::::::::::::::::::::::::::::::::::::::::::::
         [  #0 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------  
-               REST,
-               "",
+               REST, "",
                "fs4.                    f4.                     e4.                     ds4.",
                "oth-                    ers                     you                     seem",
-               REST,
-               REST,
+               "a4.                     <gs d'>4.                <a e'>8 c8      <ds a>  <c ds>  a       <c a'>",
+               "fs,8    cs'     f!      <b, f'>4.               <c e>4.                 <fs, ds'>4      ds8",
         ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               REST,
-               "",
+               REST, "",
                "d?4             d4              d4              r4.                     f",
                "Mous-           e-              ian                                     to",
-               REST,
-               REST,
+               "<b d>4          <fs a c d>4     d'4             f,?8    b       d       f       f,      d'",
+               "<d g d'>4.              <d d'>4.                <g d'>2. ",
         # TO DO... RIT HERE...!
         ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               REST,
-               "",
+               REST, "",
                "f4.                     e4.                     ds4.                    d4.",
                "me                      your                    cur-                    va- ",
-               REST,
-               REST,
+               "f8      f,      d'       e       as,   <cs as'>  ds      b       gs'     f       b,      <b gs'>",
+               "<d d'>4         e'8     <g, e'>4.                <gs ds'>4      f'8      <f, d'>4.",
         ],[#2 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               REST,
-               "",
+               REST, "",
                "cs4.                    c4.                     b4              b4              b4",
                "ture                    is                      Gaus-           si-             an",
-               REST,
-               REST,
+               "cs8     a       fs'     c       a       <ds fs> <a b fs'>2.",
+               "<fs cs'>4       ds'8    <c ds>4.                 <b ds>2.",
         ],
     ]
+# ---------------------------------------------------
+curve_2 = copy.deepcopy(curve)
+
+curve_2[0][2] = "fs8     fs8     fs4             f4              e4.                     ds4."
+curve_2[0][3] = "Could-   n’t     there           be              some                    e-"
+
+curve_2[1][2] = "d?4.                     d4.                    R2."
+curve_2[1][3] = "quat-                   ion"
+
+curve_2[2][3] = "May-                    be                      some-                    thing"
+
+curve_2[3][2] = "cs4.                    c4.                     b4.                     r4."
+curve_2[3][3] = "short                   of                      sex?"  # spoken??
+# ---------------------------------------------------
+curve_3 = copy.deepcopy(curve)
+
+curve_3[0][3] = "dis-                    tance                   tween                   our"
+
+curve_3[1][2] = "d?4.                    d4.                    r4.                     f4              f8"
+curve_3[1][3] = "ac-                     tion                                           Cuz             I"
+
+curve_3[2][3] = "suff-                   er                      such                    a"
+
+curve_3[3][2] = "cs4.                    c4              c8      b4.                     b4."
+curve_3[3][3] = "pri-                    mal             a-      trac-                   tion"
+# ---------------------------------------------------
+curve_4 = copy.deepcopy(curve)
+
+# now the line moves to Sue... with some minor adjustments
+curve_4[0][0] = curve[0][2]
+curve_4[0][1] = "smart                   but                     so                       mo-"
+curve_4[0][2] = REST
+curve_4[0][3] = ""
+
+curve_4[1][0] = "d?4.                    d4.                      r4.                    f"
+curve_4[1][1] = "ron-                    ic                                              Please"
+curve_4[1][2] = REST
+curve_4[1][3] = ""
+
+curve_4[2][0] = curve[2][2]
+curve_4[2][1] = "try                     to                      keep                    your"
+curve_4[2][2] = REST
+curve_4[2][3] = ""
+
+curve_4[3][0] = "cs4.                    c4.                     b4.                     b4."
+curve_4[3][1] = "thoughts                pla-                    ton-                    ic"
+curve_4[3][2] = REST
+curve_4[3][3] = ""
+
+
+
+
+# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 # maybe an intro here...?
 
@@ -177,71 +337,9 @@ sue_1 = [
 
 
 
-dynamics = [
-           #::::::::::::::::::::::::::::::::::::::::::::::::::||::::::::::::::::::::::::::::::::::::::::::::
-        [  #10 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               REST,
-               "",
-               "c4              c8      c4              d8      e4              d8      d8      d8      d8",  
-               "have            no      cor-            re-     la-             tion    And     our     dy-",
-               REST,
-               REST,
-        ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               REST,
-               "",
-               "d8      d8      d8      e4              e8      f4.                     r4.",
-               "na-     mics    are     too             com-    plex",
-               REST,
-               REST,
-        ],[#2 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-                REST,
-               "",
-               "R2.                                                r4.                  g8      g8      g8",
-               "                                                                        Could-   n’t     there",
-               REST,
-               REST,
-        ],[#2 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-                REST,
-               "",
-               "g2.                                             R2.",
-               "be",
-               REST,
-               REST,
-        ],
-    ]
 
-sex = [
-           #::::::::::::::::::::::::::::::::::::::::::::::::::||::::::::::::::::::::::::::::::::::::::::::::
-        [  #0 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------  
-               REST,
-               "",
-               "fs8     fs8     fs4             f4              e4.                     ds4.",
-               "Could-   n’t     there           be              some                    e-",
-               REST,
-               REST,
-        ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               REST,
-               "",
-               "d?4.                     d4.                    R2.",
-               "quat-                   ion",
-               REST,
-               REST,
-        ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               REST,
-               "",
-               "f4.                     e4.                     ds4.                    d4.",
-               "May-                    be                      some-                    thing",
-               REST,
-               REST,
-        ],[#2 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-                REST,
-               "",
-               "cs4.                    c4.                     b4.                     r4.",
-               "short                   of                      sex?",  # spoken??
-               REST,
-               REST,
-        ],
-    ]
+
+
 
 # change the metrical alignment here...?
 
@@ -280,72 +378,9 @@ sue_2 = [
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 
-fraction = [
-           #::::::::::::::::::::::::::::::::::::::::::::::::::||::::::::::::::::::::::::::::::::::::::::::::
-        [  #0 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               REST,
-               "",
-               "c4              c8      c4              d8      e4              d8      r4              d8",
-               "love            some    sa-             tis-    fac-            tion                    A",
-               REST,
-               REST,
-        ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               REST,
-               "",
-               "d4              d8      d4              e8      f4              e8      r4.",
-               "whole           not     just            a       frac-          tion",
-               REST,
-               REST,
-        ],[#2 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-                REST,
-               "",
-               "R2.                                                r4.                  g4              g8",
-               "                                                                        Let's            ne-",
-               REST,
-               REST,
-        ],[#3 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-                REST,
-               "",
-               "g2.                                             r4.                     fs4.",
-               "gate                                                                    this",
-               REST,
-               REST,
-        ],
-    ]
 
-action = [
-           #::::::::::::::::::::::::::::::::::::::::::::::::::||::::::::::::::::::::::::::::::::::::::::::::
-        [  #0 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------  
-               REST,
-               "",
-               "fs4.                    f4.                     e4.                     ds4.",
-               "dis-                    tance                   tween                   our",
-               REST,
-               REST,
-        ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               REST,
-               "",
-               "d?4.                    d4.                    r4.                     f4              f8",
-               "ac-                     tion                                           Cuz             I",
-               REST,
-               REST,
-        # TO DO... RIT HERE...!
-        ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               REST,
-               "",
-               "f4.                     e4.                     ds4.                    d4.",
-               "suff-                   er                      such                    a ",
-               REST,
-               REST,
-        ],[#2 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               REST,
-               "",
-               "cs4.                    c4              c8      b4.                     b4.",
-               "pri-                    mal             a-      trac-                   tion",  #QUSTION... add [for you] in lyrics?
-               REST,
-               REST,
-        ],
-    ]
+
+
 
 sue_3 = [
            #::::::::::::::::::::::::::::::::::::::::::::::::::||::::::::::::::::::::::::::::::::::::::::::::
@@ -381,138 +416,26 @@ sue_3 = [
     ]
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-
-
-
-binomial = [
-           #::::::::::::::::::::::::::::::::::::::::::::::::::||::::::::::::::::::::::::::::::::::::::::::::
-        [  #0 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               REST,
-               "",
-               "c4              c8      c4              d8      e4              d8      d4              d8",
-               "let             us      be              bi-     no-             mi-     al              You",
-               "<e, g c>4      <e g c>8  <e g c>4     <e g d'>8  <e g e'>4    <e g d'>8  <f a d>4      <f a d>8  ",
-               "<c, c'>4.--             g'4.-.                  <c, c'>4.--             a'4.-.",
-        ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               "R2.                                             r4.                     r4              g'8", # remove this Oh?
-               "                                                                                        Oh",
-               "d4              d8      d4              e8(      f4)            e8      r4.",
-               "make            me      feel            Ro-                     meoal",
-               "<f a d>4      <f a d>8  <f a d>4      <f a e'>8  <f a f'>4     <f a e'>8 r4.",
-               "<d, d'>4.--             a'4.-.                  <d, d'>4.--             r4.",
-        ],[#2 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               'g2.                                             R2.                     ',
-               "Tim!",
-               REST,
-               "",
-               'R2.                                               R2.', # grace notes here again...?
-               REST,
-        ],[#3 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               "R2.                                             r4.                     fs4.",
-               "                                                                        you're",
-                REST,
-               "",
-               REST,
-               REST,
-        ],
-    ]
-
-moronic = [
-           #::::::::::::::::::::::::::::::::::::::::::::::::::||::::::::::::::::::::::::::::::::::::::::::::
-        [  #0 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------  
-               "fs4.                    f4.                     e4.                     ds4.",
-               "smart                   but                     so                       mo-",
-               REST,
-               "",
-               REST,
-               REST,
-        ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               "d?4.                    d4.                      r4.                    f",
-               "ron-                    ic                                              Please",
-               REST,
-               "",
-               REST,
-               REST,
-        # TO DO... RIT HERE...!
-        ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               "f4.                     e4.                     ds4.                    d4.",
-               "try                     to                      keep                    your",
-               REST,
-               "",
-               REST,
-               REST,
-        ],[#2 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               "cs4.                    c4.                     b4.                     b4.   ",
-               "thoughts                pla-                    ton-                    ic",
-               REST,
-               "",
-               REST,
-               REST,
-        ],
-    ]
-
-
-# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-
-# TO DO... repeat what would be Sue's part here with the piano only?
-
-
-
-blast = [
-           #::::::::::::::::::::::::::::::::::::::::::::::::::||::::::::::::::::::::::::::::::::::::::::::::
-        [  #0 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               "c4              c8      c4              d8      e4              d8      d4              d8",
-               "love            is      as-             ymp-    to-             tic     And             his",
-               "c4              c8      c4              d8      e4              d8      d4              d8",
-               "love            is      as-             ymp-    to-             tic     And             my",
-               "<e, g c>4      <e g c>8  <e g c>4     <e g d'>8  <e g e'>4    <e g d'>8  <f a d>4      <f a d>8  ",
-               "<c, c'>4.--             g'4.-.                  <c, c'>4.--             a'4.-.",
-        ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               "d4              d8      d4              e8      f4              e8      r4.",
-               "pass-           ion     i-              di-     o-              tic",
-               "d4              d8      d4              e8      f4              e8      r4.",
-               "pass-           ion     i-              di-     o-              tic",
-               "<f a d>4      <f a d>8  <f a d>4      <f a e'>8  <f a f'>4     <f a e'>8 r4.",
-               "<d, d'>4.--             a'4.-.                  <d, d'>4.--             r4.",
-        ],[#2 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------   # JUST KILL IT ALREADY?
-               REST,
-               "",
-               REST,
-               "",
-               REST,
-               REST,
-        ],[#3 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               REST,
-               "",
-               REST,
-               "",
-               REST,
-               REST,
-        ],
-    ]
-# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 math_arrangement.extend_lines(intro)
 math_arrangement.extend_lines(aso)
 math_arrangement.extend_lines(curve)
 math_arrangement.extend_lines(sue_1)
 
 math_arrangement.extend_lines(intro_2)
-math_arrangement.extend_lines(dynamics)
-math_arrangement.extend_lines(sex)
+math_arrangement.extend_lines(aso_2)
+math_arrangement.extend_lines(curve_2)
 math_arrangement.extend_lines(sue_2)
 
 math_arrangement.extend_lines(intro_3)
-math_arrangement.extend_lines(fraction)
-math_arrangement.extend_lines(action)
+math_arrangement.extend_lines(aso_3)
+math_arrangement.extend_lines(curve_3)
 math_arrangement.extend_lines(sue_3)
 
 math_arrangement.extend_lines(intro_4)
-math_arrangement.extend_lines(binomial)
-math_arrangement.extend_lines(moronic)
+math_arrangement.extend_lines(aso_4)
+math_arrangement.extend_lines(curve_4)
 
 math_arrangement.extend_lines(intro_5)
 math_arrangement.extend_lines(blast)
 
 math_arrangement.show_pdf()
-
-
