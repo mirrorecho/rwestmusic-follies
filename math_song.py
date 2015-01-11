@@ -7,6 +7,9 @@ from tools import MathArrangement
 math_arrangement = MathArrangement()
 
 # TO DO... 
+# ending using joss and jive
+# - check pitches/music in Sue nimbers
+# tempo
 # - add arpeggio on Sue G chord
 # - complex dynamics
 # fix `
@@ -16,6 +19,10 @@ math_arrangement = MathArrangement()
 # rit in curve lines
 # stray fermati
 # awkward leading into the final intro (maybe put sue piano part here?)
+# roll before this nerd...
+# would be better to hold after Gaussian
+# staff spacing
+# final barline
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
@@ -222,7 +229,7 @@ curve = [
                "fs,8    cs'     f!      <b, f'>4.               <c e>4.                 <fs, ds'>4      ds8",
         ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
                REST, "",
-               "d?4             d4              d4              r4.                     f",
+               "d'?4             d4              d4              r4.                     f,",
                "Mous-           e-              ian                                     to",
                "<b d>4          <fs a c d>4     d'4             f,?8    b       d       f       f,      d'",
                "<d g d'>4.              <d d'>4.                <g d'>2. ",
@@ -235,10 +242,10 @@ curve = [
                "<d d'>4         e'8     <g, e'>4.                <gs ds'>4      f'8      <f, d'>4.",
         ],[#2 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
                REST, "",
-               "cs4.                    c4.                     b4              b4              b4",
+               "cs4.                    c4.                     b'4              b4              b4",
                "ture                    is                      Gaus-           si-             an",
-               "cs8     a       fs'     c       a       <ds fs> <a b fs'>2.",
-               "<fs cs'>4       ds'8    <c ds>4.                 <b ds>2.",
+               "cs8     a       fs'     c       a       <ds fs> <a b fs'>2. ",
+               "<fs cs'>4       ds'8    <c ds>4.                 <b ds>2. ",
         ],
     ]
 # ---------------------------------------------------
@@ -252,7 +259,7 @@ curve_2[1][3] = "quat-                   ion"
 
 curve_2[2][3] = "May-                    be                      some-                    thing"
 
-curve_2[3][2] = "cs4.                    c4.                     b4.                     r4."
+curve_2[3][2] = "cs4.                    c4.                     b'4.                     r4."
 curve_2[3][3] = "short                   of                      sex?"  # spoken??
 # ---------------------------------------------------
 curve_3 = copy.deepcopy(curve)
@@ -285,135 +292,81 @@ curve_4[2][1] = "try                     to                      keep           
 curve_4[2][2] = REST
 curve_4[2][3] = ""
 
-curve_4[3][0] = "cs4.                    c4.                     b4.                     b4."
+# the last piano line is also different
+curve_4[3][0] = "cs4.                    c4.                     b'4.                     b4."
 curve_4[3][1] = "thoughts                pla-                    ton-                    ic"
 curve_4[3][2] = REST
 curve_4[3][3] = ""
-
-
-
+curve_4[3][4] = "cs8     a       fs'     ds       c      a'     <d, b'>2."
+curve_4[3][5] = "<fs cs'>4       ds'8    a,4      fs'8          <b, f'>2."
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-
-# maybe an intro here...?
-
-#TO DO... push this back 2 beats?
 
 sue_1 = [
            #::::::::::::::::::::::::::::::::::::::::::::::::::||::::::::::::::::::::::::::::::::::::::::::::
         [  #0 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------  
-               "R2.                                             as4-.           as8-.   cs4.-.", # TO DO... RANGE IS BAD
+               "R2.                                             f4-.            f8-.    f4.-.", 
                "                                                Zer-            o       one",
-               REST,
-               "",
-               REST,
-               "R2.                                              <c, c'>4.-.             <cs cs'>4.-.",
+               REST, "",
+               "<a b fs'>4.             <f f'>8-.-> r8  r8       <g f'>4-.      <g f'>8-. <as f'>4.-.",
+               "<b ds>2.                                         <c, c'>4.-.             <cs cs'>4.-.",
         ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               "cs4.-.                  e4.-.                   ds4.-.                  ds4.-.",
+               "f4.-.                  f4.-.                   f4.-.                  gs4.-.",
                "one                     two                     three                   five",
-               REST,
-               "",
-               REST,
+               REST, "",
+               "<as' f'>4.-.            <f f'>4.-.              <f f'>4.-.              <gs gs'>4.-.",
                "<cs cs'>4.-.            <d d'>4.-.              <ds ds'>4.-.            <es es'>4.-.",  # or just use f?
         ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               "gs4.-.                  r4.                     r4.                     r4              as8",
-               "eight!                                                                                  This",
-               REST,
-               "",
-               REST,
-               "<gs gs'>4.-.            r4.                     R2.",
+               "b4.-.                  r4.                     r4.                      a4.",
+               "eight!                                                                  This",
+               REST, "",
+               "<b b'>4.-.              r4.                     <c a'>2.",
+               "<gs gs'>4.-.            r4.                     <a a'>2.",
         ],[#2 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               "as4             as8     as4             b8      cs4             b8      as4.",
+               "a4->           a8       a4              b8      c4             b8       g4.",
                "nerd            I       don`t           a-      pre-            ci-     ate",
-               REST,
-               "",
-               REST,
-               REST,
+               REST, "",
+               "<d a'>4. ~              <d a'>4         b'8      <e, c'>4        b'8      <f g>8-.-> r8   r8",
+               "<f f'>2.                                         <g g'>4.(               d'8-.)    r8   r8",
         ],
     ]
+sue_2 = copy.deepcopy(sue_1)
 
-# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+sue_2[0][0]= REST
+sue_2[0][1]=""
 
+# TO DO... change these pitches
+sue_2[1][0]="f4-.            f8 -.   r8      f8-.    f8-.    f4.-.                   r8      gs8-.   gs8-."
+sue_2[1][1]="thir-           teen            twen-   ty-     one,                            thir-   ty"
+# these changes are needed for the fib sequence...
+sue_2[1][4]="r4.                     r8      <a a'>8 <a a'>8 <a a'>4.                r8    <as' as'>8 <as as'>8"
+sue_2[1][5]="<cs cs'>4       <cs cs'>8  r4.                  R2."
 
+# TO DO... change these pitches
+sue_2[2][0]="b4.-.                   r4.                     r4.                     r4              a8"
+sue_2[2][1]="four!                                                                                   Can"
+# this change are needed for the fib sequence... OK?
+sue_2[2][4]="<as as'>4.             r4.                     <c a'>2."
 
+sue_2[3][0]="a8      a8      a 8     a8      a8      b8      c4.                    r4."
+sue_2[3][1]="an-     y-      one     be      such    a       bore!?"
+# ---------------------------------------------------
+# TO DO... ALL OK?
+sue_3 = copy.deepcopy(sue_1)
 
+sue_3[0][0]="R2.                                             r4.                     r8      f8-.   f8-."
+sue_3[0][1]="                                                                                fif-    ty"
+sue_3[0][4]="R2.                                             r4.                     r8      <g'' g'>8    <g g'>8"
 
+sue_3[1][0]="f4.-.                  r4.                     r4.                     r8       gs8-.   gs8-."
+sue_3[1][1]="five                                                                            eight-  y"
+sue_3[1][4]="<g g'>4.               r4.                     r4.                     r8       <f' f'>8    <f f'>8"
 
+sue_3[2][1]="nine!                                                                                   Be-"
+sue_3[2][4]="<f f'>4.                r4.                     <c, a'>2."
 
+sue_3[3][1]="sides,          it`s    not             for     you             I       pine"
 
-# change the metrical alignment here...?
-
-sue_2 = [
-           #::::::::::::::::::::::::::::::::::::::::::::::::::||::::::::::::::::::::::::::::::::::::::::::::
-        [  #0 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------  
-               REST,
-               "",
-               REST,
-               "",
-               REST,
-               REST,
-        ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               "as4-.           as8 -.  r8      cs8-.   cs8-.   ds4.-.                  r8      ds8-.   ds8-.",
-               "thir-           teen            twen-   ty-     one,                            thir-   ty",
-               REST,
-               "",
-               "r4.                     r8      <a a'>8 <a a'>8 <a a'>4.                r8    <as' as'>8 <as as'>8",
-               "<cs cs'>4       <cs cs'>8  r4.                  R2.",
-        ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               "e4.-.                   r4.                     r4.                     r4              as,8",
-               "four!                                                                                   Can",
-               REST,
-               "",
-               "<as' as'>4.             r4.                     R2.",
-               REST,
-        ],[#2 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               "as8     as8     as8     as8     b8      cs8     ds4.                    r4.",
-               "an-     y-      one     be      such    a       bore!?",
-               REST,
-               "",
-               REST,
-               REST,
-        ],
-    ]
-# ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-
-
-
-
-
-
-sue_3 = [
-           #::::::::::::::::::::::::::::::::::::::::::::::::::||::::::::::::::::::::::::::::::::::::::::::::
-        [  #0 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------  
-               "R2.                                             r4.                     r8      as8-.   as8-.",
-               "                                                                                fif-    ty",
-               REST,
-               "",
-               "R2.                                             r4.                     r8      <g'' g'>8    <g g'>8",
-               REST,
-        ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               "cs4.-.                  r4.                     r4.                     r8      ds8-.   ds8-.", # TO DO... these pitches may be bad
-               "five                                                                            eight-  y",
-               REST,
-               "",
-               "<g g'>4.              r4.                     r4.                     r8      <d'' d'>8    <d d'>8",
-               REST,
-        ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               "e4.-.                   r4.                     r4.                     r4              as,8",
-               "nine!                                                                                   Be-",
-               REST,
-               "",
-               "<d d'>4.                r4.                     R2.",
-               REST,
-        ],[#2 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               "as4             as8     as4             b8      cs4             b8      as4.",
-               "sides,          it`s    not             for     you             I       pine",
-               REST,
-               "",
-               REST,
-               REST,
-        ],
-    ]
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 math_arrangement.extend_lines(intro)
@@ -438,4 +391,5 @@ math_arrangement.extend_lines(curve_4)
 math_arrangement.extend_lines(intro_5)
 math_arrangement.extend_lines(blast)
 
-math_arrangement.show_pdf()
+#math_arrangement.show_pdf()
+math_arrangement.play()

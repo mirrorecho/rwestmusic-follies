@@ -22,6 +22,10 @@ class FolliesSongArrangement(Arrangement):
     def arrange_score(self):
         pass
 
+    def play(self):
+        self.make_score()
+        play(self.score)
+
     def show_pdf(self):
         self.make_score()
 
@@ -136,6 +140,8 @@ class MathArrangement(FolliesSongArrangement):
         for staff in self.score:
             time_signature = TimeSignature((6,8))
             attach(time_signature, staff)
+        tempo = Tempo(Duration(3, 8), 132)
+        attach(tempo, self.score[0])
 
     def extend_lines(self, lines):
         big_lines = self.combine_lines(lines)
