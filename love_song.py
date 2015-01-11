@@ -394,6 +394,6 @@ love_arrangement.extend_lines(choose_lines)
 
 love_arrangement.extend_lines(tell_lines)
 
-love_arrangement.show_pdf()
-
+#love_arrangement.show_pdf()
+love_arrangement.play()
 

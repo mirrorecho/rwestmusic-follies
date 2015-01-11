@@ -8,8 +8,10 @@ math_arrangement = MathArrangement()
 
 # TO DO... 
 # ending using joss and jive
+# the c# is odd.
 # - check pitches/music in Sue nimbers
-# tempo
+# tempo (slow down in middle)
+# key change near end?
 # - add arpeggio on Sue G chord
 # - complex dynamics
 # fix `
@@ -23,6 +25,7 @@ math_arrangement = MathArrangement()
 # would be better to hold after Gaussian
 # staff spacing
 # final barline
+
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
