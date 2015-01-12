@@ -2,7 +2,7 @@ suelyrics = \lyricmode {                                                        
 
 timlyrics = \lyricmode {           Though my  love            is      as-             ymp-    to-             tic     And             my pass-           ion     i-              di-     o-              tic Sue!                                                                                                                                             to  oth-                    ers                     you                     seem Mous-           e-              ian                                     to me                      your                    cur-                    va-  ture                    is                      Gaus-           si-             an          Though we  have            no      cor-            re-     la-             tion    And     our     dy- na-     mics    are     too             com-    plex Could-   n`t     there  be   Could-   n’t     there           be              some                    e- quat-                   ion May-                    be                      some-                    thing short                   of                      sex?          Still I`d  love            some    sa-             tis-    fac-            tion                    A whole           not     just            a       frac-          tion                Let's  ne-   gate this  dis-                    tance                   tween                   our ac-                     tion                                           Cuz             I suff-                   er                      such                    a pri-                    mal             a-      trac-                   tion                          So  let             us      be              bi-     no-             mi-     al              You make            me      feel            Ro-                     meoal                    Though my  love            is      as-             ymp-    to-             tic     And             my pass-           ion     i-              di-     o-              tic  } 
 
-% 2015-01-11 02:29
+% 2015-01-11 18:06
 
 \version "2.18.2"
 \language "english"
@@ -626,11 +626,9 @@ suelyrics = \lyricmode {                                                        
 						e'8 -\staccato
 					}
 					{
-						f'4 -\tenuto
-						e'8 -\staccato
-						cs'4 -\accent -\staccato
-						r8
-						<a cs' fs'>2.
+						f'4. -\accent -\staccato
+						r4.
+						<a' cs'' fs''>2.
 					}
 				}
 				{
@@ -765,11 +763,9 @@ suelyrics = \lyricmode {                                                        
 						e'8 -\staccato
 					}
 					{
-						f'4 -\tenuto
-						e'8 -\staccato
-						cs'4 -\accent -\staccato
-						r8
-						<a cs' fs'>2.
+						f'4. -\accent -\staccato
+						r4.
+						<a' cs'' fs''>2.
 					}
 				}
 				{
@@ -908,11 +904,9 @@ suelyrics = \lyricmode {                                                        
 						e'8 -\staccato
 					}
 					{
-						f'4 -\tenuto
-						e'8 -\staccato
-						cs'4 -\accent -\staccato
-						r8
-						<a cs' fs'>2.
+						f'4. -\accent -\staccato
+						r4.
+						<a' cs'' fs''>2.
 					}
 				}
 				{
@@ -1045,11 +1039,9 @@ suelyrics = \lyricmode {                                                        
 						e'8 -\staccato
 					}
 					{
-						f'4 -\tenuto
-						e'8 -\staccato
-						cs'4 -\accent -\staccato
-						r8
-						<a cs' fs'>2.
+						f'4. -\accent -\staccato
+						r4.
+						<a' cs'' fs''>2.
 					}
 				}
 				{
@@ -1216,16 +1208,14 @@ suelyrics = \lyricmode {                                                        
 					r4.
 					<g,, d, g,>2. -\fermata
 					{
-						d4 -\staccato
-						f8 -\staccato
-						gs4 -\staccato
-						b8 -\staccato
+						d,4 -\staccato
+						f,8 -\staccato
+						gs,4 -\staccato
+						b,8 -\staccato
 					}
 					{
-						gs,4 -\staccato
-						f,8 -\staccato
-						gs,4 -\accent -\staccato
-						r8
+						gs,4. -\accent -\staccato
+						r4.
 						<fs, cs>2.
 					}
 				}
@@ -1328,16 +1318,14 @@ suelyrics = \lyricmode {                                                        
 					r4.
 					<g,, d, g,>2. -\fermata
 					{
-						d4 -\staccato
-						f8 -\staccato
-						gs4 -\staccato
-						b8 -\staccato
+						d,4 -\staccato
+						f,8 -\staccato
+						gs,4 -\staccato
+						b,8 -\staccato
 					}
 					{
-						gs,4 -\staccato
-						f,8 -\staccato
-						gs,4 -\accent -\staccato
-						r8
+						gs,4. -\accent -\staccato
+						r4.
 						<fs, cs>2.
 					}
 				}
@@ -1440,16 +1428,14 @@ suelyrics = \lyricmode {                                                        
 					r4.
 					<g,, d, g,>2. -\fermata
 					{
-						d4 -\staccato
-						f8 -\staccato
-						gs4 -\staccato
-						b8 -\staccato
+						d,4 -\staccato
+						f,8 -\staccato
+						gs,4 -\staccato
+						b,8 -\staccato
 					}
 					{
-						gs,4 -\staccato
-						f,8 -\staccato
-						gs,4 -\accent -\staccato
-						r8
+						gs,4. -\accent -\staccato
+						r4.
 						<fs, cs>2.
 					}
 				}
@@ -1552,16 +1538,14 @@ suelyrics = \lyricmode {                                                        
 					r4.
 					<g,, d, g,>2. -\fermata
 					{
-						d4 -\staccato
-						f8 -\staccato
-						gs4 -\staccato
-						b8 -\staccato
+						d,4 -\staccato
+						f,8 -\staccato
+						gs,4 -\staccato
+						b,8 -\staccato
 					}
 					{
-						gs,4 -\staccato
-						f,8 -\staccato
-						gs,4 -\accent -\staccato
-						r8
+						gs,4. -\accent -\staccato
+						r4.
 						<fs, cs>2.
 					}
 				}

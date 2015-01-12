@@ -49,7 +49,7 @@ piano_jive = [
 piano_jive_mod = [
   piano_jive[0],
   piano_jive[1],
-  "f4-- e8-.  cs4-.-> r8 ",
+  "f4.-.->  f4.-.-> ",
   "<a cs fs>2.",
   ]
 
@@ -62,7 +62,7 @@ piano_joss = [
 piano_joss_mod = [
   piano_joss[0], 
   piano_joss[1],
-  "gs4-. f8-. gs4-.-> r8", 
+  "gs4.-.-> gs4.-.->", 
   "<fs cs'>2."
 ]
 
@@ -136,7 +136,7 @@ aso = [
                'g2.\\fermata^"(ridiculous long fermata)"         R2.                     ',
                "Sue!                                                                    ",
                '<g\' b d g>2.\\fermata^"(ridiculous long fermata)" ' + rel("c'",piano_jive[1]), # arpeggiate here (TO DO ... giving error)
-               "<g, d' g>2.\\fermata " + rel("c",piano_joss[1]),
+               "<g, d' g>2.\\fermata " + rel("c,",piano_joss[1]),
         ],[#3 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
                 REST, "",
                "R2.                                             r4.                     fs4.",
