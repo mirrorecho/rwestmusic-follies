@@ -11,6 +11,9 @@ import calliope
 
 from calliope.work import Arrangement, Project, Part
 
+def rel(pitch_string, music_string):
+  return "\\relative " + pitch_string + " { " + music_string + " } "
+
 class FolliesSongArrangement(Arrangement):
     def __init__(self, name, title):
 

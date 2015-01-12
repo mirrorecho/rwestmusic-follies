@@ -2,7 +2,7 @@ from abjad import *
 
 import copy
 
-from tools import MathArrangement
+from tools import MathArrangement, rel
 
 math_arrangement = MathArrangement()
 
@@ -31,8 +31,7 @@ math_arrangement = MathArrangement()
 
 # here's the music!
 
-def rel(pitch_string, music_string):
-  return "\\relative " + pitch_string + " { " + music_string + " } "
+
  
 REST = "R2. R2."
 
