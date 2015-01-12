@@ -3,7 +3,15 @@ from abjad import *
 import copy
 import subprocess
 
+# TO DO ( for both songs)
+# - remove lilypond engraving note
+# - add lyricist
+# - vertical spacing of staves (esp piano)
+# - TRANSPOSE?
+
+
 # any way to avoid this sys path part??
+
 import sys
 sys.path.append("/Users/randallwest/Code/mirrorecho")
 
@@ -23,7 +31,9 @@ class FolliesSongArrangement(Arrangement):
         return format(lilypond_file)
 
     def arrange_score(self):
-        pass
+        bar_line = indicatortools.BarLine('|.')
+        for staff in self.score:
+            attach(bar_line, staff[-1])
 
     def play(self):
         self.make_score()
@@ -34,9 +44,9 @@ class FolliesSongArrangement(Arrangement):
 
         self.arrange_score()
 
-        spacing_vector = layouttools.make_spacing_vector(0, 0, 6, 0)
-        override(self.score).vertical_axis_group.staff_staff_spacing = spacing_vector
-        override(self.score).staff_grouper.staff_staff_spacing = spacing_vector
+        # spacing_vector = layouttools.make_spacing_vector(0, 0, 0, 0)
+        # override(self.score).vertical_axis_group.staff_staff_spacing = spacing_vector
+        # override(self.score).staff_grouper.staff_staff_spacing = spacing_vector
         set_(self.score).mark_formatter = schemetools.Scheme('format-mark-box-numbers')
         lilypond_file = lilypondfiletools.make_basic_lilypond_file(self.score)
 
@@ -44,7 +54,7 @@ class FolliesSongArrangement(Arrangement):
         lilypond_file.global_staff_size = 16
 
         context_block = lilypondfiletools.ContextBlock(
-            # source_context_name="Staff \RemoveEmptyStaves",
+            source_context_name="Staff \RemoveEmptyStaves",
             )
         override(context_block).vertical_axis_group.remove_first = True
         lilypond_file.layout_block.items.append(context_block)
@@ -114,13 +124,18 @@ class LoveArrangement(FolliesSongArrangement):
         self.parts["piano"][0].extend("\\relative c' {" + big_lines[2] + "}")
         self.parts["piano"][1].extend("\\relative c {" + big_lines[3] + "}")
 
+    def arrange_score(self):
+        super().arrange_score()
+        tempo = Tempo(Duration(1, 4), 100)
+        attach(tempo, self.score[0])
+
     def get_ly_string(self, lilypond_file):
         # hacks in here to add the lyrics lilypond code manually...
         song_ly = ""
         song_ly += "lovelyrics = \\lyricmode {" + self.lyrics + "} \n\r\n\r"
         song_ly += format(lilypond_file)
 
-        song_ly = song_ly.replace('\\new Staff {', '\\new Staff\n\r       \\new Voice ="voice" {', 1)
+        song_ly = song_ly.replace('\\new Staff {', '\\new Staff\n\r       \\new Voice ="voice" {  \\dynamicUp', 1)
 
         song_ly = song_ly.replace("\\new PianoStaff <<", "\\new Lyrics \\lyricsto voice \\lovelyrics \n\r    \\new PianoStaff <<")
         
@@ -130,8 +145,8 @@ class MathArrangement(FolliesSongArrangement):
     def __init__(self):
 
         super().__init__(name="math_song", title="An Asymptotic Love Affair")
-        self.add_part(name='sue_voice', instrument=instrumenttools.MezzoSopranoVoice(instrument_name="Mezzo Soprano",short_instrument_name="."))
-        self.add_part(name='tim_voice', instrument=instrumenttools.BaritoneVoice(instrument_name="Baritone", allowable_clefs=('bass', ),  short_instrument_name="."))
+        self.add_part(name='sue_voice', instrument=instrumenttools.MezzoSopranoVoice(instrument_name="Sue",short_instrument_name="S."))
+        self.add_part(name='tim_voice', instrument=instrumenttools.BaritoneVoice(instrument_name="Tim", allowable_clefs=('bass', ),  short_instrument_name="T."))
         self.add_piano_staff_part(name='piano', instrument=instrumenttools.Piano(instrument_name="Piano", short_instrument_name="."))
 
         # lyrics
@@ -139,15 +154,17 @@ class MathArrangement(FolliesSongArrangement):
         self.tim_lyrics = ""
 
     def arrange_score(self):
+        super().arrange_score()
         attach(Clef('bass'), self.score[1]) # not sure why the part didn't add the staff properly...
         for staff in self.score:
             time_signature = TimeSignature((6,8))
             attach(time_signature, staff)
-        tempo = Tempo(Duration(3, 8), 132)
+        tempo = Tempo(Duration(3, 8), 120)
         attach(tempo, self.score[0])
 
     def extend_lines(self, lines):
         big_lines = self.combine_lines(lines)
+
         self.parts["sue_voice"].extend("\\relative c' {" + big_lines[0] + "}")
         self.sue_lyrics += big_lines[1] + " "
         self.parts["tim_voice"].extend("\\relative c {" + big_lines[2] + "}")
@@ -162,8 +179,8 @@ class MathArrangement(FolliesSongArrangement):
         song_ly += "timlyrics = \\lyricmode {" + self.tim_lyrics + "} \n\r\n\r"
         song_ly += format(lilypond_file)
 
-        song_ly = song_ly.replace('\\new Staff {', '\\new Staff\n\r       \\new Voice ="suevoice" {', 1)
-        song_ly = song_ly.replace('\\new Staff {', '\\new Lyrics \\lyricsto suevoice \\suelyrics \n\r    \\new Staff\n\r       \\new Voice ="timvoice" {', 1)
+        song_ly = song_ly.replace('\\new Staff {', '\\new Staff\n\r       \\new Voice ="suevoice" { \\dynamicUp ', 1)
+        song_ly = song_ly.replace('\\new Staff {', '\\new Lyrics \\lyricsto suevoice \\suelyrics \n\r    \\new Staff\n\r       \\new Voice ="timvoice" {  \\dynamicUp', 1)
 
         song_ly = song_ly.replace("\\new PianoStaff <<", "\n\r    \\new Lyrics \\lyricsto timvoice \\timlyrics \n\r    \\new PianoStaff <<")
         

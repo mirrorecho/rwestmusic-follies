@@ -1,8 +1,8 @@
-suelyrics = \lyricmode {                                                               Zer-            o       one one                     two                     three                   five eight!                                                                  This nerd            I       don`t           a-      pre-            ci-     ate                  thir-           teen            twen-   ty-     one,                            thir-   ty four!                                                                                   Can an-     y-      one     be      such    a       bore!?                                                                                                 fif-    ty five                                                                            eight-  y nine!                                                                                   Be- sides,          it`s    not             for     you             I       pine        Oh  Tim! You're   smart                   but                     so                       mo- ron-                    ic                                              Please try                     to                      keep                    your thoughts                pla-                    ton-                    ic     Though his  love            is      as-             ymp-    to-             tic     And             his   } 
+suelyrics = \lyricmode {                                                               Zer-            o       one one                     two                     three                   five eight!                                                                  This nerd            I       don't           a-      pre-            ci-     ate                  thir-           teen            twen-   ty-     one,                            thir-   ty four!                                                                                   Can an-     y-      one     be      such    a       bore!?                                                                                                 fif-    ty five                                                                            eight-  y nine!                                                                                   Be- sides,          it's    not             for     you             I       pine        Oh  Tim! You're   smart                   but                     so                       mo- ron-                    ic                                              Please try                     to                      keep                    your thoughts                pla-                    ton-                    ic     Though his  love            is      as-             ymp-    to-             tic     And             his    } 
 
-timlyrics = \lyricmode {           Though my  love            is      as-             ymp-    to-             tic     And             my pass-           ion     i-              di-     o-              tic Sue!                                                                                                                                             to  oth-                    ers                     you                     seem Mous-           e-              ian                                     to me                      your                    cur-                    va-  ture                    is                      Gaus-           si-             an          Though we  have            no      cor-            re-     la-             tion    And     our     dy- na-     mics    are     too             com-    plex Could-   n`t     there  be   Could-   n’t     there           be              some                    e- quat-                   ion May-                    be                      some-                    thing short                   of                      sex?          Still I`d  love            some    sa-             tis-    fac-            tion                    A whole           not     just            a       frac-          tion                Let's  ne-   gate this  dis-                    tance                   tween                   our ac-                     tion                                           Cuz             I suff-                   er                      such                    a pri-                    mal             a-      trac-                   tion                          So  let             us      be              bi-     no-             mi-     al              You make            me      feel            Ro-                     meoal                    Though my  love            is      as-             ymp-    to-             tic     And             my pass-           ion     i-              di-     o-              tic  } 
+timlyrics = \lyricmode {           Though my  love            is      as-             ymp-    to-             tic     And             my pass-           ion     i-              di-     o-              tic Sue!                                                                                                                                             to  oth-                    ers                     you                     seem Mous-           e-              ian                                     to me                      your                    cur-                    va-  ture                    is                      Gaus-           si-             an          Though we  have            no      cor-            re-     la-             tion    And     our     dy- na-     mics    are     too             com-    plex Could-   n't     there  be   Could-   n’t     there           be              some                    e- quat-                   ion May-                    be                      some-                    thing short                   of                      sex?          Still I'd  love            some    sa-             tis-    fac-            tion                    A whole           not     just            a       frac-          tion                Let's  ne-   gate this  dis-                    tance                   tween                   our ac-                     tion                                           Cuz             I suff-                   er                      such                    a pri-                    mal             a-      trac-                   tion                          So  let             us      be              bi-     no-             mi-     al              You make            me      feel            Ro-                     meoal                    Though my  love            is      as-             ymp-    to-             tic     And             my pass-           ion     i-              di-     o-              tic   } 
 
-% 2015-01-11 18:06
+% 2015-01-12 02:31
 
 \version "2.18.2"
 \language "english"
@@ -16,6 +16,7 @@ suelyrics = \lyricmode {                                                        
 
 \layout {
 	\context {
+		\Staff \RemoveEmptyStaves
 		\override VerticalAxisGroup #'remove-first = ##t
 	}
 }
@@ -26,15 +27,13 @@ suelyrics = \lyricmode {                                                        
 
 \score {
 	\new Score \with {
-		\override StaffGrouper #'staff-staff-spacing = #'((basic-distance . 0) (minimum-distance . 0) (padding . 6) (stretchability . 0))
-		\override VerticalAxisGroup #'staff-staff-spacing = #'((basic-distance . 0) (minimum-distance . 0) (padding . 6) (stretchability . 0))
 		markFormatter = #format-mark-box-numbers
 	} <<
 		\new Staff
-       \new Voice ="suevoice" {
-			\set Staff.instrumentName = \markup { Mezzo Soprano }
-			\set Staff.shortInstrumentName = \markup { . }
-			\tempo 4.=132
+       \new Voice ="suevoice" { \dynamicUp 
+			\set Staff.instrumentName = \markup { Sue }
+			\set Staff.shortInstrumentName = \markup { S. }
+			\tempo 4.=120
 			\time 6/8
 			{
 				R2.
@@ -129,7 +128,7 @@ suelyrics = \lyricmode {                                                        
 				r8
 				gs'8 -\staccato
 				gs'8 -\staccato
-				b'4. -\staccato
+				gs'4. -\staccato
 				r4.
 				r4.
 				r4
@@ -266,14 +265,18 @@ suelyrics = \lyricmode {                                                        
 				f'4
 				e'8
 				r4.
+				R2.
+				R2.
+				R2.
+				R2.
 			}
 		}
 		\new Lyrics \lyricsto suevoice \suelyrics 
     \new Staff
-       \new Voice ="timvoice" {
+       \new Voice ="timvoice" {  \dynamicUp
 			\clef "bass"
-			\set Staff.instrumentName = \markup { Baritone }
-			\set Staff.shortInstrumentName = \markup { . }
+			\set Staff.instrumentName = \markup { Tim }
+			\set Staff.shortInstrumentName = \markup { T. }
 			\time 6/8
 			{
 				R2.
@@ -358,15 +361,15 @@ suelyrics = \lyricmode {                                                        
 				d8
 				e4
 				d8
+				d8 \fff \>
 				d8
+				d8 \p
+				d8 \fff \>
 				d8
-				d8
-				d8
-				d8
-				d8
-				d4
-				e8
-				f4.
+				d8 \p
+				d4 \ff
+				e8 \ppp
+				f4. \sfz
 				r4.
 				{
 					g8
@@ -547,6 +550,10 @@ suelyrics = \lyricmode {                                                        
 				f4
 				e8
 				r4.
+				R2.
+				R2.
+				R2.
+				R2.
 			}
 		}
 		
@@ -587,8 +594,7 @@ suelyrics = \lyricmode {                                                        
 					{
 						f'4 -\tenuto
 						e'8 -\staccato
-						g4 -\accent -\staccato
-						r8
+						g4. -\accent -\staccato
 						r4.
 						{
 							<e g c'>4 -\tenuto
@@ -627,7 +633,7 @@ suelyrics = \lyricmode {                                                        
 					}
 					{
 						f'4. -\accent -\staccato
-						r4.
+						f'4. -\accent -\staccato
 						<a' cs'' fs''>2.
 					}
 				}
@@ -724,8 +730,7 @@ suelyrics = \lyricmode {                                                        
 					{
 						f'4 -\tenuto
 						e'8 -\staccato
-						g4 -\accent -\staccato
-						r8
+						g4. -\accent -\staccato
 						r4.
 						{
 							<e g c'>4 -\tenuto
@@ -764,7 +769,7 @@ suelyrics = \lyricmode {                                                        
 					}
 					{
 						f'4. -\accent -\staccato
-						r4.
+						f'4. -\accent -\staccato
 						<a' cs'' fs''>2.
 					}
 				}
@@ -814,15 +819,16 @@ suelyrics = \lyricmode {                                                        
 					<g f'>4 -\staccato
 					<g f'>8 -\staccato
 					<as f'>4. -\staccato
-					r4.
+					<f f'>4 -\staccato
+					<f f'>8 -\staccato
 					r8
-					<a a'>8
-					<a a'>8
-					<a a'>4.
+					<a a'>8 -\staccato
+					<a a'>8 -\staccato
+					<a a'>4. -\staccato
 					r8
-					<as' as''>8
-					<as' as''>8
-					<as' as''>4.
+					<as' as''>8 -\staccato
+					<as' as''>8 -\staccato
+					<as' as''>4. -\staccato
 					r4.
 					<c'' a''>2.
 					<d'' a''>4. ~
@@ -865,8 +871,7 @@ suelyrics = \lyricmode {                                                        
 					{
 						f'4 -\tenuto
 						e'8 -\staccato
-						g4 -\accent -\staccato
-						r8
+						g4. -\accent -\staccato
 						r4.
 						{
 							<e g c'>4 -\tenuto
@@ -905,7 +910,7 @@ suelyrics = \lyricmode {                                                        
 					}
 					{
 						f'4. -\accent -\staccato
-						r4.
+						f'4. -\accent -\staccato
 						<a' cs'' fs''>2.
 					}
 				}
@@ -948,17 +953,20 @@ suelyrics = \lyricmode {                                                        
 					<a b fs'>2.
 				}
 				{
-					R2.
-					r4.
+					<a b fs'>4.
+					<f f'>8 -\accent -\staccato
 					r8
-					<g'' g'''>8
+					r8
+					<f' f''>4. -\staccato
+					r8
+					<g'' g'''>8 -\staccato
 					<g'' g'''>8
 					<g'' g'''>4.
 					r4.
-					r4.
+					<gs' gs''>4. -\staccato
 					r8
-					<f''' f''''>8
-					<f''' f''''>8
+					<f''' f''''>8 -\staccato
+					<f''' f''''>8 -\staccato
 					<f''' f''''>4.
 					r4.
 					<c'' a''>2.
@@ -1002,8 +1010,7 @@ suelyrics = \lyricmode {                                                        
 					{
 						f4 -\tenuto
 						e8 -\staccato
-						g,4 -\accent -\staccato
-						r8
+						g,4. -\accent -\staccato
 						r4.
 						r4
 						<e, g, c>8
@@ -1040,7 +1047,7 @@ suelyrics = \lyricmode {                                                        
 					}
 					{
 						f'4. -\accent -\staccato
-						r4.
+						f'4. -\accent -\staccato
 						<a' cs'' fs''>2.
 					}
 				}
@@ -1113,8 +1120,7 @@ suelyrics = \lyricmode {                                                        
 					{
 						f'4 -\tenuto
 						e'8 -\staccato
-						g4 -\accent -\staccato
-						r8
+						g4. -\accent -\staccato
 						r4.
 						{
 							<e g c'>4 -\tenuto
@@ -1144,6 +1150,19 @@ suelyrics = \lyricmode {                                                        
 					<f a f'>4
 					<f a e'>8
 					r4.
+					{
+						c'2.
+						b4 -\tenuto
+						b8 -\staccato
+						d'4 -\tenuto
+						e'8 -\staccato
+						f'4 -\tenuto
+						e'8 -\staccato
+						g4. -\accent -\staccato
+						c'4 -\accent -\staccato
+						r8
+						r4.
+					}
 				}
 			}
 			\new Staff {
@@ -1151,23 +1170,19 @@ suelyrics = \lyricmode {                                                        
 				{
 					{
 						<c, c>4. (
-						g,4 -\staccato )
-						r8
+						g,4. -\staccato )
 					}
 					{
 						<c, c>4. (
-						g,4 -\staccato )
-						r8
+						g,4. -\staccato )
 					}
 					{
 						<d, d>4. (
-						a,4 -\staccato )
-						r8
+						a,4. -\staccato )
 					}
 					{
 						<d, d>4. (
-						a,4 -\staccato )
-						r8
+						a,4. -\staccato )
 					}
 					{
 						<g, e>2.
@@ -1190,19 +1205,16 @@ suelyrics = \lyricmode {                                                        
 					{
 						{
 							<c, c>4. (
-							g,4 -\staccato )
-							r8
+							g,4. -\staccato )
 						}
 						{
 							<c, c>4. (
-							g,4 -\staccato )
-							r8
+							g,4. -\staccato )
 						}
 					}
 					{
 						<d, d>4. (
-						a,4 -\staccato )
-						r8
+						a,4. -\staccato )
 					}
 					<d, d>4. -\tenuto
 					r4.
@@ -1215,7 +1227,7 @@ suelyrics = \lyricmode {                                                        
 					}
 					{
 						gs,4. -\accent -\staccato
-						r4.
+						gs,4. -\accent -\staccato
 						<fs, cs>2.
 					}
 				}
@@ -1261,23 +1273,19 @@ suelyrics = \lyricmode {                                                        
 				{
 					{
 						<c, c>4. (
-						g,4 -\staccato )
-						r8
+						g,4. -\staccato )
 					}
 					{
 						<c, c>4. (
-						g,4 -\staccato )
-						r8
+						g,4. -\staccato )
 					}
 					{
 						<d, d>4. (
-						a,4 -\staccato )
-						r8
+						a,4. -\staccato )
 					}
 					{
 						<d, d>4. (
-						a,4 -\staccato )
-						r8
+						a,4. -\staccato )
 					}
 					{
 						<g, e>2.
@@ -1300,23 +1308,20 @@ suelyrics = \lyricmode {                                                        
 					{
 						{
 							<c, c>4. (
-							g,4 -\staccato )
-							r8
+							g,4. -\staccato )
 						}
 						{
 							<c, c>4. (
-							g,4 -\staccato )
-							r8
+							g,4. -\staccato )
 						}
 					}
 					{
 						<d, d>4. (
-						a,4 -\staccato )
-						r8
+						a,4. -\staccato )
 					}
 					<d, d>4. -\tenuto
 					r4.
-					<g,, d, g,>2. -\fermata
+					<g,, d, g,>2.
 					{
 						d,4 -\staccato
 						f,8 -\staccato
@@ -1325,7 +1330,7 @@ suelyrics = \lyricmode {                                                        
 					}
 					{
 						gs,4. -\accent -\staccato
-						r4.
+						gs,4. -\accent -\staccato
 						<fs, cs>2.
 					}
 				}
@@ -1355,39 +1360,40 @@ suelyrics = \lyricmode {                                                        
 					<b, ds>2.
 					<c, c>4. -\staccato
 					<cs, cs>4. -\staccato
-					<cs, cs>4
-					<cs, cs>8
+					<cs, cs>4 -\staccato
+					<cs, cs>8 -\staccato
+					r8
+					<f, f>8 -\staccato
+					<f, f>8 -\staccato
+					<f, f>4. -\staccato
+					r8
+					<gs, gs>8 -\staccato
+					<gs, gs>8 -\staccato
+					<gs, gs>4. -\staccato
 					r4.
-					R2.
-					<gs,, gs,>4. -\staccato
-					r4.
-					<a,, a,>2.
-					<f,, f,>2.
-					<g,, g,>4. (
-					d,8 -\staccato )
+					<a, a>2.
+					<f, f>2.
+					<g, g>4. (
+					d8 -\staccato )
 					r8
 					r8
 				}
 				{
 					{
 						<c, c>4. (
-						g,4 -\staccato )
-						r8
+						g,4. -\staccato )
 					}
 					{
 						<c, c>4. (
-						g,4 -\staccato )
-						r8
+						g,4. -\staccato )
 					}
 					{
 						<d, d>4. (
-						a,4 -\staccato )
-						r8
+						a,4. -\staccato )
 					}
 					{
 						<d, d>4. (
-						a,4 -\staccato )
-						r8
+						a,4. -\staccato )
 					}
 					{
 						<g, e>2.
@@ -1410,23 +1416,20 @@ suelyrics = \lyricmode {                                                        
 					{
 						{
 							<c, c>4. (
-							g,4 -\staccato )
-							r8
+							g,4. -\staccato )
 						}
 						{
 							<c, c>4. (
-							g,4 -\staccato )
-							r8
+							g,4. -\staccato )
 						}
 					}
 					{
 						<d, d>4. (
-						a,4 -\staccato )
-						r8
+						a,4. -\staccato )
 					}
 					<d, d>4. -\tenuto
 					r4.
-					<g,, d, g,>2. -\fermata
+					<g,, d, g,>2.
 					{
 						d,4 -\staccato
 						f,8 -\staccato
@@ -1435,7 +1438,7 @@ suelyrics = \lyricmode {                                                        
 					}
 					{
 						gs,4. -\accent -\staccato
-						r4.
+						gs,4. -\accent -\staccato
 						<fs, cs>2.
 					}
 				}
@@ -1481,23 +1484,19 @@ suelyrics = \lyricmode {                                                        
 				{
 					{
 						<c, c>4. (
-						g,4 -\staccato )
-						r8
+						g,4. -\staccato )
 					}
 					{
 						<c, c>4. (
-						g,4 -\staccato )
-						r8
+						g,4. -\staccato )
 					}
 					{
 						<d, d>4. (
-						a,4 -\staccato )
-						r8
+						a,4. -\staccato )
 					}
 					{
 						<d, d>4. (
-						a,4 -\staccato )
-						r8
+						a,4. -\staccato )
 					}
 					{
 						<g, e>2.
@@ -1520,23 +1519,20 @@ suelyrics = \lyricmode {                                                        
 					{
 						{
 							<c, c>4. (
-							g,4 -\staccato )
-							r8
+							g,4. -\staccato )
 						}
 						{
 							<c, c>4. (
-							g,4 -\staccato )
-							r8
+							g,4. -\staccato )
 						}
 					}
 					{
 						<d, d>4. (
-						a,4 -\staccato )
-						r8
+						a,4. -\staccato )
 					}
 					<d, d>4. -\tenuto
 					r4.
-					<g,, d, g,>2. -\fermata
+					<g,, d, g,>2.
 					{
 						d,4 -\staccato
 						f,8 -\staccato
@@ -1545,7 +1541,7 @@ suelyrics = \lyricmode {                                                        
 					}
 					{
 						gs,4. -\accent -\staccato
-						r4.
+						gs,4. -\accent -\staccato
 						<fs, cs>2.
 					}
 				}
@@ -1575,23 +1571,19 @@ suelyrics = \lyricmode {                                                        
 				{
 					{
 						<c, c>4. (
-						g,4 -\staccato )
-						r8
+						g,4. -\staccato )
 					}
 					{
 						<c, c>4. (
-						g,4 -\staccato )
-						r8
+						g,4. -\staccato )
 					}
 					{
 						<d, d>4. (
-						a,4 -\staccato )
-						r8
+						a,4. -\staccato )
 					}
 					{
 						<d, d>4. (
-						a,4 -\staccato )
-						r8
+						a,4. -\staccato )
 					}
 					{
 						<g, e>2.
@@ -1614,23 +1606,33 @@ suelyrics = \lyricmode {                                                        
 					{
 						{
 							<c, c>4. (
-							g,4 -\staccato )
-							r8
+							g,4. -\staccato )
 						}
 						{
 							<c, c>4. (
-							g,4 -\staccato )
-							r8
+							g,4. -\staccato )
 						}
 					}
 					{
 						<d, d>4. (
-						a,4 -\staccato )
-						r8
+						a,4. -\staccato )
 					}
 					<d, d>4. -\tenuto
 					r4.
+					<g, e>2.
+					d,4 -\staccato
+					f,8 -\staccato
+					gs,4 -\staccato
+					b,8 -\staccato
+					gs,4 -\staccato
+					g,8 -\staccato
+					b,4 -\accent -\staccato
+					r8
+					<c, c>4 -\accent -\staccato
+					r8
+					r4.
 				}
+				\bar "|."
 			}
 		>>
 	>>

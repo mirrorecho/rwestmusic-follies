@@ -7,25 +7,23 @@ from tools import MathArrangement, rel
 math_arrangement = MathArrangement()
 
 # TO DO... 
-# ending using joss and jive
-# the c# is odd.
-# - check pitches/music in Sue nimbers
+# - double Sue's pitches in #s
 # tempo (slow down in middle)
 # key change near end?
 # - add arpeggio on Sue G chord
-# - complex dynamics
-# fix `
 # phrasing
 # respell accidentals?
 # move Mouse-e-an and Gaussian up?
 # rit in curve lines
-# stray fermati
+# check for cautionary accidnetals
 # awkward leading into the final intro (maybe put sue piano part here?)
 # roll before this nerd...
 # would be better to hold after Gaussian
 # staff spacing
-# final barline
-
+# remove "engraving by lilypond"
+# arppegios
+# (maybe) - more complex dynamics
+# 8va at eighty-nine
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
@@ -35,13 +33,13 @@ math_arrangement = MathArrangement()
  
 REST = "R2. R2."
 
-piano_plunk_c = rel("c,", "<c c'>4.(    g'4-.) r8 ")
-piano_plunk_d = rel("c,", "<d d'>4.(    a'4-.) r8 ")
+piano_plunk_c = rel("c,", "<c c'>4.(    g'4.-.) ")
+piano_plunk_d = rel("c,", "<d d'>4.(    a'4.-.) ")
 
 piano_jive = [
   "c2. ",
   "b4-- b8-.  d4-- e8-. ",
-  "f4-- e8-. g,4-.-> r8 ",
+  "f4-- e8-. g,4.-.-> ",
   "c4-.-> r8 r4.",
   ]
 
@@ -90,7 +88,7 @@ intro_2[3][3] = "Though we"
 
 # same for intro 3
 intro_3 = copy.deepcopy(intro)
-intro_3[3][3] = "Still I`d"
+intro_3[3][3] = "Still I\'d"
 
 # into 4 also has slightly different last measure
 intro_4 = copy.deepcopy(intro)
@@ -148,10 +146,11 @@ aso = [
 aso_2 = copy.deepcopy(aso)  # CORRELATION
 
 aso_line_2 = copy.deepcopy(aso_line)
-aso_line_2[3] = "d8 d8 d8"
+aso_line_2[3] = "d8\\fff\\> d8 d8^\\p\\! "
 aso_line_2[4] = aso_line_2[3]
-aso_line_2[6] = "f4."
-aso_line_2[7] = "r4."
+aso_line_2[5] = "d4\\ff   e8\\ppp "
+aso_line_2[6] = "f4.\\sfz "
+aso_line_2[7] = "r4. "
 
 aso_2[0][2] = "".join(aso_line_2[0:4])
 aso_2[0][3]="have            no      cor-            re-     la-             tion    And     our     dy-"
@@ -161,9 +160,9 @@ aso_2[1][3]="na-     mics    are     too             com-    plex"
 
 aso_2[2][0]=REST # get rid of fermata and adjust Tim's line at end
 aso_2[2][2]=rel("c'","g8 g g   g4. ~ g2.")
-aso_2[2][3]="Could-   n`t     there  be"
+aso_2[2][3]="Could-   n\'t     there  be"
 aso_2[2][4]=aso_2[2][4].replace('\\fermata^"(ridiculous long fermata)"', ' ')
-aso_2[2][5]=aso_2[2][5].replace('\\fermata"', ' ')
+aso_2[2][5]=aso_2[2][5].replace('\\fermata', ' ')
 
 aso_2[3][2]=REST # no pickup before the slide down
 aso_2[3][3]=""
@@ -219,6 +218,12 @@ blast[0][0] = blast[0][2] # copy notes to Sue
 blast[1][0] = blast[1][2]
 # adjustment to Sue's lyrics
 blast[0][1] = "love            is      as-             ymp-    to-             tic     And             his"
+
+blast.append([
+  REST + REST,"",REST + REST,"",
+  rel("c'"," ".join(piano_jive)),
+  " ".join(piano_joss),
+  ])
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
@@ -326,7 +331,7 @@ sue_1 = [
                "<gs gs'>4.-.            r4.                     <a a'>2.",
         ],[#2 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
                "a4->           a8       a4              b8      c4             b8       g4.",
-               "nerd            I       don`t           a-      pre-            ci-     ate",
+               "nerd            I       don\'t           a-      pre-            ci-     ate",
                REST, "",
                "<d a'>4. ~              <d a'>4         b'8      <e, c'>4        b'8      <f g>8-.-> r8   r8",
                "<f f'>2.                                         <g g'>4.(               d'8-.)    r8   r8",
@@ -341,14 +346,15 @@ sue_2[0][1]=""
 sue_2[1][0]="f4-.            f8 -.   r8      f8-.    f8-.    f4.-.                   r8      gs8-.   gs8-."
 sue_2[1][1]="thir-           teen            twen-   ty-     one,                            thir-   ty"
 # these changes are needed for the fib sequence...
-sue_2[1][4]="r4.                     r8      <a a'>8 <a a'>8 <a a'>4.                r8    <as' as'>8 <as as'>8"
-sue_2[1][5]="<cs cs'>4       <cs cs'>8  r4.                  R2."
+sue_2[1][4]="<f f'>4-.        <f f'>8-.     r8  <a a'>8-. <a a'>8-. <a a'>4.-.      r8    <as' as'>8-. <as as'>8-."
+sue_2[1][5]="<cs cs'>4-.       <cs cs'>8-.  r8  <f f'>8-. <f f'>8-. <f f'>4.-.      r8    <gs gs'>8-. <gs gs'>8-."
 
 # TO DO... change these pitches
-sue_2[2][0]="b4.-.                   r4.                     r4.                     r4              a8"
+sue_2[2][0]="gs4.-.                   r4.                     r4.                     r4              a8"
 sue_2[2][1]="four!                                                                                   Can"
 # this change are needed for the fib sequence... OK?
-sue_2[2][4]="<as as'>4.             r4.                     <c a'>2."
+sue_2[2][4]="<as as'>4.-.            r4.                     <c a'! >2."
+sue_2[2][5]="<gs gs'>4.-.            r4.                     <a a' >2."
 
 sue_2[3][0]="a8      a8      a 8     a8      a8      b8      c4.                    r4."
 sue_2[3][1]="an-     y-      one     be      such    a       bore!?"
@@ -358,16 +364,16 @@ sue_3 = copy.deepcopy(sue_1)
 
 sue_3[0][0]="R2.                                             r4.                     r8      f8-.   f8-."
 sue_3[0][1]="                                                                                fif-    ty"
-sue_3[0][4]="R2.                                             r4.                     r8      <g'' g'>8    <g g'>8"
+sue_3[0][4]="<a b fs'>4.             <f f'>8-.-> r8  r8      <f' f'>4.-.             r8      <g' g'>8-.    <g g'>8"
 
 sue_3[1][0]="f4.-.                  r4.                     r4.                     r8       gs8-.   gs8-."
 sue_3[1][1]="five                                                                            eight-  y"
-sue_3[1][4]="<g g'>4.               r4.                     r4.                     r8       <f' f'>8    <f f'>8"
+sue_3[1][4]="<g g'>4.               r4.                     <gs, gs'>4.-.               r8       <f'' f'>8-.  <f f'>8-."
 
 sue_3[2][1]="nine!                                                                                   Be-"
 sue_3[2][4]="<f f'>4.                r4.                     <c, a'>2."
 
-sue_3[3][1]="sides,          it`s    not             for     you             I       pine"
+sue_3[3][1]="sides,          it\'s    not             for     you             I       pine"
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
@@ -393,5 +399,5 @@ math_arrangement.extend_lines(curve_4)
 math_arrangement.extend_lines(intro_5)
 math_arrangement.extend_lines(blast)
 
-#math_arrangement.show_pdf()
-math_arrangement.play()
+math_arrangement.show_pdf()
+#math_arrangement.play()
