@@ -47,7 +47,7 @@ piano_jive_mod = [
   piano_jive[0],
   piano_jive[1],
   "f4.-.->  f4.-.-> ",
-  "<a cs fs>2.",
+  "<as cs fs>2.",
   ]
 
 piano_joss = [
@@ -95,13 +95,15 @@ intro_4 = copy.deepcopy(intro)
 intro_4[3]=[REST, "", 
     "R2. r4. r4     c8", 
     "                So", 
-    rel("c", piano_jive[2] + "r4. r4    <e g c>8"), 
-    rel("c,", piano_joss[2] + piano_joss[3])]
+    rel("c'", piano_jive[2] + "r4. r4    <e g c>8"), 
+    rel("c", piano_joss[2] + piano_joss[3])]
 
-#intro 5 copies vocal part at end to Sue
+#final piccup is different, and copies vocal part at end to Sue
 intro_5 = copy.deepcopy(intro)
+intro_5[3][2] = "R2. | r4. r4 c8"
+intro_5[3][3] = "My"
 intro_5[3][0] = intro_5[3][2]
-intro_5[3][1] = "Though his"
+intro_5[3][1] = "His"
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
@@ -136,10 +138,10 @@ aso = [
                "<g, d' g>2.\\fermata " + rel("c,",piano_joss[1]),
         ],[#3 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
                 REST, "",
-               "R2.                                             r4.                     fs4.",
+               "R2.                                             r4.\\fermata                     fs4.",
                "                                                                        to",
-               rel("c'", piano_jive_mod[2] + piano_jive_mod[3]),
-               rel("c",piano_joss_mod[2] + piano_joss_mod[3]), # TO DO... adjust for key change
+               rel("c'", piano_jive_mod[2] + " <as cs fs>2.\\fermata "),
+               rel("c",piano_joss_mod[2] + " <fs cs'>2.\\fermata "), # TO DO... adjust for key change
         ],
     ]
 # ---------------------------------------------------
@@ -159,12 +161,12 @@ aso_2[1][2] = "".join(aso_line_2[4:8])
 aso_2[1][3]="na-     mics    are     too             com-    plex" 
 
 aso_2[2][0]=REST # get rid of fermata and adjust Tim's line at end
-aso_2[2][2]=rel("c'","g8 g g   g4. ~ g2.")
+aso_2[2][2]=rel("c'","g8 g g   g4. ~ g4. r4.")
 aso_2[2][3]="Could-   n\'t     there  be"
 aso_2[2][4]=aso_2[2][4].replace('\\fermata^"(ridiculous long fermata)"', ' ')
 aso_2[2][5]=aso_2[2][5].replace('\\fermata', ' ')
 
-aso_2[3][2]=REST # no pickup before the slide down
+aso_2[3][2]="R2. r2.\\fermata" # no pickup before the slide down
 aso_2[3][3]=""
 
 # ---------------------------------------------------
@@ -217,12 +219,37 @@ blast.append(copy.deepcopy(aso[1]))
 blast[0][0] = blast[0][2] # copy notes to Sue
 blast[1][0] = blast[1][2]
 # adjustment to Sue's lyrics
-blast[0][1] = "love            is      as-             ymp-    to-             tic     And             his"
+blast[0][0] = "c4              c8      c4              d8      e4              d8      r4             e8"
+blast[0][1] = "love            is      as-             ymp-    to-             tic                   his"
+blast[0][2] = "c4              c8      c4              d8      e4              d8      r4             e8"
+blast[0][3] = "love            is      as-             ymp-    to-             tic                   my"
+blast[0][4] = piano_c_rag +           "<e, g c>4--     <e g d'>8-. <e g e'>4--  <e g d'>8-. r4   <g c e>8-." 
+
+# this is 3 bars... not two
+blast[1][0]="e4. e4. | R2. | R2."
+blast[1][1]="pass- ion"
+blast[1][2]=blast[1][0]
+blast[1][3]=blast[1][1]
+blast[1][4]="<g c e>2. ~ | <g c e>4. <g b d>4.-.-> |  <e g c>4.-.-> r4."
+blast[1][5]="<g g'>2.  ~ | <g g'>4.   <g g'>4.-.-> | <c, c'>4.-.-> r4."
+
+
+blast.append(["","","","","","",])
+
+blast[2][0]="c4\\fermata  c\\fermata  c\\fermata | c4.\\fermata  r4. "
+blast[2][1]="i- di- o- tic"
+blast[2][2]=blast[2][0]
+blast[2][3]=blast[2][1]
+blast[2][4] = "r2.\\fermata | r2.\\fermata"
+blast[2][5] = blast[2][4]
+
+#blast[1][0]="e"
+
 
 blast.append([
   REST + REST,"",REST + REST,"",
   rel("c'"," ".join(piano_jive)),
-  " ".join(piano_joss),
+  rel("c", " ".join(piano_joss)),
   ])
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -232,27 +259,27 @@ curve = [
                REST, "",
                "fs4.                    f4.                     e4.                     ds4.",
                "oth-                    ers                     you                     seem",
-               "a4.                     <gs d'>4.                <a e'>8 c8      <ds a>  <c ds>  a       <c a'>",
-               "fs,8    cs'     f!      <b, f'>4.               <c e>4.                 <fs, ds'>4      ds8",
+               "as4.                     <gs d'>4.               <a cs e>4(       ds8)    <a c ds>4.",
+               "fs,4(           f'!8)     <b, f'>4.               <cs e>4.                <fs, ds'>4.",
         ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
                REST, "",
                "d'?4             d4              d4              r4.                     f,",
                "Mous-           e-              ian                                     to",
-               "<b d>4          <fs a c d>4     d'4             f,?8    b       d       f       f,      d'",
-               "<d g d'>4.              <d d'>4.                <g d'>2. ",
+               "<fs a c d? >2.                                   f?4(            b8)     <b f' >4.",
+               "<d d'? >2.                         <g d'>2. ",
         # TO DO... RIT HERE...!
         ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
                REST, "",
                "f4.                     e4.                     ds4.                    d4.",
                "me                      your                    cur-                    va- ",
-               "f8      f,      d'       e       as,   <cs as'>  ds      b       gs'     f       b,      <b gs'>",
-               "<d d'>4         e'8     <g, e'>4.                <gs ds'>4      f'8      <f, d'>4.",
+               rel("c'", "<b f' >4.            <as cs  e>4.   <bs ds' gs>4.            <b f' gs>4."),
+               "d4(          e'8)     <g, e'>4.                <gs ds'>4.            <f d'>4.",
         ],[#2 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
                REST, "",
                "cs4.                    c4.                     b'4              b4              b4",
                "ture                    is                      Gaus-           si-             an",
-               "cs8     a       fs'     c       a       <ds fs> <a b fs'>2. ",
-               "<fs cs'>4       ds'8    <c ds>4.                 <b ds>2. ",
+               rel("c'", "<as cs fs>4.            <a c  fs> <             a b fs'>2. "),
+               "<fs cs'>4.             <c' ds>4.                 <b ds>2. ",
         ],
     ]
 # ---------------------------------------------------
@@ -304,8 +331,7 @@ curve_4[3][0] = "cs4.                    c4.                     b'4.           
 curve_4[3][1] = "thoughts                pla-                    ton-                    ic"
 curve_4[3][2] = REST
 curve_4[3][3] = ""
-curve_4[3][4] = "cs8     a       fs'     ds       c      a'     <d, b'>2."
-curve_4[3][5] = "<fs cs'>4       ds'8    a,4      fs'8          <b, f'>2."
+
 
 # ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
@@ -324,11 +350,11 @@ sue_1 = [
                "<as' f'>4.-.            <f f'>4.-.              <f f'>4.-.              <gs gs'>4.-.",
                "<cs cs'>4.-.            <d d'>4.-.              <ds ds'>4.-.            <es es'>4.-.",  # or just use f?
         ],[#1 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
-               "b4.-.                  r4.                     r4.                      a4.",
+               "b4.-.                  r4.                     r4.\\fermata                      a4.",
                "eight!                                                                  This",
-               REST, "",
-               "<b b'>4.-.              r4.                     <c a'>2.",
-               "<gs gs'>4.-.            r4.                     <a a'>2.",
+               "R2. r2.\\fermata ", "",
+               "<b b'>4.-.              r4.                     <c a'>2.\\fermata ",
+               "<gs gs'>4.-.            r4.                     <a a'>2.\\fermata ",
         ],[#2 ||-------|-------|------||-------|-------|------||-------|-------|------||-------|-------|------ 
                "a4->           a8       a4              b8      c4             b8       g4.",
                "nerd            I       don\'t           a-      pre-            ci-     ate",
@@ -350,11 +376,11 @@ sue_2[1][4]="<f f'>4-.        <f f'>8-.     r8  <a a'>8-. <a a'>8-. <a a'>4.-.  
 sue_2[1][5]="<cs cs'>4-.       <cs cs'>8-.  r8  <f f'>8-. <f f'>8-. <f f'>4.-.      r8    <gs gs'>8-. <gs gs'>8-."
 
 # TO DO... change these pitches
-sue_2[2][0]="gs4.-.                   r4.                     r4.                     r4              a8"
+sue_2[2][0]="gs4.-.                   r4.                     r4.\\fermata                     r4              a8"
 sue_2[2][1]="four!                                                                                   Can"
 # this change are needed for the fib sequence... OK?
-sue_2[2][4]="<as as'>4.-.            r4.                     <c a'! >2."
-sue_2[2][5]="<gs gs'>4.-.            r4.                     <a a' >2."
+sue_2[2][4]="<as as'>4.-.            r4.                     <c a'! >2.\\fermata "
+sue_2[2][5]="<gs gs'>4.-.            r4.                     <a a' >2.\\fermata "
 
 sue_2[3][0]="a8      a8      a 8     a8      a8      b8      c4.                    r4."
 sue_2[3][1]="an-     y-      one     be      such    a       bore!?"
@@ -364,14 +390,14 @@ sue_3 = copy.deepcopy(sue_1)
 
 sue_3[0][0]="R2.                                             r4.                     r8      f8-.   f8-."
 sue_3[0][1]="                                                                                fif-    ty"
-sue_3[0][4]="<a b fs'>4.             <f f'>8-.-> r8  r8      <f' f'>4.-.             r8      <g' g'>8-.    <g g'>8"
+sue_3[0][4]="<a b fs'>4.             <f f'>8-.-> r8  r8      <f' f'>4.-.             r8      <f f'>8-.    <f f'>8-."
 
 sue_3[1][0]="f4.-.                  r4.                     r4.                     r8       gs8-.   gs8-."
 sue_3[1][1]="five                                                                            eight-  y"
-sue_3[1][4]="<g g'>4.               r4.                     <gs, gs'>4.-.               r8       <f'' f'>8-.  <f f'>8-."
+sue_3[1][4]="<g g'>4.-.               r4.                     <gs gs'>4.-.               r8       <f f'>8-.  <f f'>8-."
 
 sue_3[2][1]="nine!                                                                                   Be-"
-sue_3[2][4]="<f f'>4.                r4.                     <c, a'>2."
+sue_3[2][4]="<f f'>4.                r4.                     <c a'>2.\\fermata "
 
 sue_3[3][1]="sides,          it\'s    not             for     you             I       pine"
 
@@ -399,5 +425,5 @@ math_arrangement.extend_lines(curve_4)
 math_arrangement.extend_lines(intro_5)
 math_arrangement.extend_lines(blast)
 
-math_arrangement.show_pdf()
-#math_arrangement.play()
+#math_arrangement.show_pdf()
+math_arrangement.play()

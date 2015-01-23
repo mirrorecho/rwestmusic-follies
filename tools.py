@@ -23,9 +23,9 @@ def rel(pitch_string, music_string):
   return "\\relative " + pitch_string + " { " + music_string + " } "
 
 class FolliesSongArrangement(Arrangement):
-    def __init__(self, name, title):
+    def __init__(self, name, title, time_signature=None):
 
-        super().__init__(name=name, title=title, project=Project(name="rwestmusic-follies"))
+        super().__init__(name=name, title=title, project=Project(name="rwestmusic-follies"), time_signature=time_signature)
 
     def get_ly_string(self, lilypond_file):
         return format(lilypond_file)
@@ -144,7 +144,7 @@ class LoveArrangement(FolliesSongArrangement):
 class MathArrangement(FolliesSongArrangement):
     def __init__(self):
 
-        super().__init__(name="math_song", title="An Asymptotic Love Affair")
+        super().__init__(name="math_song", title="An Asymptotic Love Affair", time_signature=TimeSignature( (6,8) ) )
         self.add_part(name='sue_voice', instrument=instrumenttools.MezzoSopranoVoice(instrument_name="Sue",short_instrument_name="S."))
         self.add_part(name='tim_voice', instrument=instrumenttools.BaritoneVoice(instrument_name="Tim", allowable_clefs=('bass', ),  short_instrument_name="T."))
         self.add_piano_staff_part(name='piano', instrument=instrumenttools.Piano(instrument_name="Piano", short_instrument_name="."))
@@ -156,11 +156,12 @@ class MathArrangement(FolliesSongArrangement):
     def arrange_score(self):
         super().arrange_score()
         attach(Clef('bass'), self.score[1]) # not sure why the part didn't add the staff properly...
-        for staff in self.score:
-            time_signature = TimeSignature((6,8))
-            attach(time_signature, staff)
+        #for staff in self.score:
+            #time_signature = TimeSignature((6,8))
+            #attach(time_signature, staff)
         tempo = Tempo(Duration(3, 8), 120)
-        attach(tempo, self.score[0])
+        slow_tempo = Tempo(Duration(3, 8), 92)
+        attach(copy.deepcopy(tempo), self.score[0])
 
     def extend_lines(self, lines):
         big_lines = self.combine_lines(lines)
