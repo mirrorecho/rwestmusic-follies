@@ -17,12 +17,12 @@ sys.path.append("/Users/randallwest/Code/mirrorecho")
 
 import calliope
 
-from calliope.work import Arrangement, Project, Part
+from calliope.work import Bubble, Project, Part
 
 def rel(pitch_string, music_string):
   return "\\relative " + pitch_string + " { " + music_string + " } "
 
-class FolliesSongArrangement(Arrangement):
+class FolliesSongArrangement(Bubble):
     def __init__(self, name, title, time_signature=None):
 
         super().__init__(name=name, title=title, project=Project(name="rwestmusic-follies"), time_signature=time_signature)
@@ -217,8 +217,8 @@ class TheatricalArrangement(FolliesSongArrangement):
         
         return song_ly
 
-
-class DramaArrangement(Arrangement):
+# NOT used...
+class DramaArrangement(Bubble):
     def __init__(self, name, title):
 
         super().__init__(name=name, title=title, project=Project(name="rwestmusic-follies"))
